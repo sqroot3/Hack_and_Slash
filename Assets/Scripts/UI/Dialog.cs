@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text), typeof(Canvas))]
 public class Dialog : MonoBehaviour {
     [SerializeField] private Text message;
     [SerializeField] private Canvas UICanvas;
     [SerializeField] private Sprite character;
     [SerializeField] private Image avatar;
+    [SerializeField] private KeyCode skipKey;
     public float charTime = 1.0f;
     public float expiringTime = 5.0f;
     private float[] positionLeft = { -204f, 4.5f };
     private float[] positionRight = { 214f, 4.5f };
+    
 
 
     void Update () {
@@ -28,6 +29,13 @@ public class Dialog : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.F))
         {
             StartCoroutine(WriteMessage(charTime, expiringTime, "Hello there", true));
+        }
+
+        //skip message test
+        if(Input.GetKeyDown(skipKey))
+        {
+            UICanvas.enabled = false;
+            StopAllCoroutines();
         }
         
 	}
