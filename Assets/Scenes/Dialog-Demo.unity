@@ -315,8 +315,8 @@ MonoBehaviour:
   character: {fileID: 21300000, guid: e234c126e2ac9a74c99f1737c4717d41, type: 3}
   avatar: {fileID: 1160543531}
   skipKey: 99
-  charTime: 1
-  expiringTime: 5
+  charTime: 0.1
+  expiringTime: 10
 --- !u!23 &1008786707
 MeshRenderer:
   m_ObjectHideFlags: 0
