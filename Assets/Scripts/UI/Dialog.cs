@@ -15,7 +15,9 @@ public class Dialog : MonoBehaviour {
     private float[] positionLeft = { -204f, 4.5f };
     private float[] positionRight = { 214f, 4.5f };
     private int charLimit = 59;
-    
+    private int maxLines = 3;
+    //private int charLimit = 10;
+
 
 
     void Update () {
@@ -43,7 +45,7 @@ public class Dialog : MonoBehaviour {
         //long message test
         if(Input.GetKeyDown(KeyCode.K))
         {
-            string longText = "Bacon ipsum dolor amet jowl biltong ham hock turducken trifecta. Flank beef rump, pork loin landjaeger tenderloin biltong turkey short loin pork chop meatball. Doner meatball pig short ribs pancetta. Leberkas fatback pork belly, frankfurter alcatra beef ribs shank meatloaf hamburger. Tenderloin venison shank brisket short ribs frankfurter pork chop hamburger. Tenderloin strip steak bresaola, meatball salami sirloin boudin short ribs meatloaf. Swine prosciutto pork loin short ribs shankle.";
+            string longText = "Bacon ipsum dolor amet bacon pork loin beef shank sirloin. Filet mignon doner kevin fatback jowl. Buffalo tail biltong ground round kielbasa leberkas, pork chop salami boudin tri-tip frankfurter capicola beef ribs jerky. Biltong turkey frankfurter, landjaeger pork loin kielbasa tri-tip pork cow kevin pancetta flank buffalo. Cow doner ground round shank picanha buffalo beef frankfurter flank. Boudin biltong sirloin jerky, pancetta ball tip cow alcatra ground round spare ribs filet mignon. Strip steak burgdoggen shank prosciutto.";
             StartCoroutine(WriteMessage(charTime, expiringTime, longText, false));
         }
         
@@ -65,9 +67,9 @@ public class Dialog : MonoBehaviour {
         //for each line, print each character
         for(int line = 0; line < lines.Count; ++line)
         {
-            if(line >= 2)
+            if(line >= maxLines - 1)
             {
-                message.text = lines[line - 2] + lines[line - 1];
+                message.text = lines[line - (maxLines - 1)] + lines[line - 1];
             }
             for(int i = 0; i < lines[line].Length; ++i)
             {
@@ -86,28 +88,64 @@ public class Dialog : MonoBehaviour {
         UICanvas.enabled = false;
     }
 
-    //Returns a list of substrings generated from the initial string
     public List<String> SplitString(string text)
     {
+        //do a first run, identify where the spaces and cutoff points are located on the string
+        List<int> spaces = new List<int>();
+        List<int> cutoffs = new List<int>();
+        for (int i = 0; i < text.Length; ++i)
+        {
+            if(text[i] == ' ')
+                spaces.Add(i);
+            if (i % charLimit == 0 && i != 0)
+                cutoffs.Add(i);
+        }
+
+
+        //locate where each line's break should be - calculated to be the last whitespace before cutoff point
+        List<int> breaks = new List<int>();
+        int line = 0;
+        for (int i = 0; i < spaces.Count; ++i)
+        {
+            //if we've already covered all possible lines, break out of the loop
+            if (line >= cutoffs.Count)
+                break;
+
+            //if we're at the last space, there's still more text to go & there's exactly one more line to take care off, add the break
+            if (i == spaces.Count - 1 && spaces[i] < text.Length && line == cutoffs.Count - 1)
+            {
+
+                breaks.Add(spaces[i]);
+                line++;
+            }
+            //else, if we're at any space other than the last:
+            //If the current space is before the cutoff point, the next space is past the cutoff point
+            // OR the current space itself is at a cutoff point, add the break
+            else if (spaces[i] < cutoffs[line] && spaces[i + 1] > cutoffs[line] || spaces[i] == cutoffs[line])
+            {
+                breaks.Add(spaces[i]);
+                line++;
+            }
+        }
+
+        //create our list of substrings, populate it with the lines generated from the breaks above
         List<String> dst = new List<String>();
         dst.Add("");
 
         int lineNumber = 0;
         for (int i = 0; i < text.Length; ++i)
         {
-            //if at char limit, go to new line
-            if (i % charLimit == 0 && i != 0)
+            //if we still have lines to account for AND we're currently in the position of a break: add the newline to the old line, create new empty line
+            if (lineNumber < cutoffs.Count && i == breaks[lineNumber])
             {
                 dst.Add("");
-                //if word isn't completed, add on a hyhon
-                if (Char.IsWhiteSpace(text[i + 1]) || Char.IsWhiteSpace(text[i]) || Char.IsWhiteSpace(text[i - 1]))
-                    dst[lineNumber++] += "\n";
-                else
-                    dst[lineNumber++] += "-\n";
+                dst[lineNumber++] += " \n";
             }
-
-            dst[lineNumber] += text[i];
+            //else, just print the character that was there
+            else
+                dst[lineNumber] += text[i];
         }
+
         return dst;
     }
 
