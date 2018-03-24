@@ -10,6 +10,7 @@ public class Dialog : MonoBehaviour {
     [SerializeField] private Sprite character;
     [SerializeField] private Image avatar;
     [SerializeField] private KeyCode skipKey;
+    [SerializeField] private int dialogID;
     public float charTime = 1.0f;
     public float expiringTime = 5.0f;
     private float[] positionLeft = { -204f, 4.5f };
@@ -18,6 +19,7 @@ public class Dialog : MonoBehaviour {
     private int maxLines = 3;
     //private int charLimit = 10;
 
+    public static int activeDialog = -1;
 
 
     void Update () {
@@ -38,8 +40,9 @@ public class Dialog : MonoBehaviour {
         //skip message test
         if(Input.GetKeyDown(skipKey))
         {
-            UICanvas.enabled = false;
-            StopAllCoroutines();
+            Stop(true);
+            //UICanvas.enabled = false;
+            //StopAllCoroutines();
         }
 
         //long message test
@@ -54,38 +57,45 @@ public class Dialog : MonoBehaviour {
     
     public IEnumerator WriteMessage(float charTime, float expiringTime, string text, bool isLeft)
     {
-        RectTransform parent = avatar.GetComponentInParent<RectTransform>();
-        parent.anchoredPosition3D = (isLeft) ? new Vector3(positionLeft[0], positionLeft[1]) : new Vector3(positionRight[0], positionRight[1]);
-        message.text = "";
-        UICanvas.enabled = true;
-        avatar.sprite = character;
-
-        //take into account longer lines - may need to subdivide
-        //when we've printed 3 lines already, message needs to be adjusted to include the previous 2 as the start, then print the current, and so on
-        List<String> lines = SplitString(text);
-        
-        //for each line, print each character
-        for(int line = 0; line < lines.Count; ++line)
+        if(activeDialog == -1)
         {
-            if(line >= maxLines - 1)
-            {
-                message.text = lines[line - (maxLines - 1)] + lines[line - 1];
-            }
-            for(int i = 0; i < lines[line].Length; ++i)
-            {
-                message.text += lines[line][i];
-                yield return new WaitForSeconds(charTime);
-            }
-        }
+            activeDialog = dialogID;
+            avatar.enabled = true;
+            RectTransform parent = avatar.GetComponentInParent<RectTransform>();
+            parent.anchoredPosition3D = (isLeft) ? new Vector3(positionLeft[0], positionLeft[1]) : new Vector3(positionRight[0], positionRight[1]);
+            message.text = "";
+            UICanvas.enabled = true;
+            avatar.sprite = character;
 
-        StartCoroutine(DeleteMessage(expiringTime));
+            //take into account longer lines - may need to subdivide
+            //when we've printed 3 lines already, message needs to be adjusted to include the previous 2 as the start, then print the current, and so on
+            List<String> lines = SplitString(text);
+
+            //for each line, print each character
+            for (int line = 0; line < lines.Count; ++line)
+            {
+                if (line >= maxLines - 1)
+                {
+                    message.text = lines[line - (maxLines - 1)] + lines[line - 1];
+                }
+                for (int i = 0; i < lines[line].Length; ++i)
+                {
+                    message.text += lines[line][i];
+                    yield return new WaitForSeconds(charTime);
+                }
+            }
+
+            StartCoroutine(DeleteMessage(expiringTime));
+        }
     }
 
     public IEnumerator DeleteMessage(float expiringTime)
     {
         yield return new WaitForSeconds(expiringTime);
         message.text = "";
-        UICanvas.enabled = false;
+        activeDialog = -1;
+        //UICanvas.enabled = false;
+
     }
 
     public List<String> SplitString(string text)
@@ -149,4 +159,20 @@ public class Dialog : MonoBehaviour {
         return dst;
     }
 
+    public int getID()
+    {
+        return dialogID;
+    }
+
+    public void Stop(bool hide)
+    {
+        message.text = "";
+        activeDialog = -1;
+        StopAllCoroutines();
+        if (hide)
+        {
+            avatar.enabled = false;
+            UICanvas.enabled = false;
+        }
+    }
 }
