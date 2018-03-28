@@ -326,6 +326,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\Conversation.cs" />
     <Compile Include="Assets\Scripts\UI\ConversationPlayer.cs" />
+    <Compile Include="Assets\Scripts\UI\Speaker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

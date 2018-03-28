@@ -8,13 +8,14 @@ using System;
 [CreateAssetMenu(fileName = "Conversation", menuName = "Dialog")]
 public class Conversation : ScriptableObject {
 
+    public Speaker speak;
+
     [Serializable]
 	public class ConversationMessage
     {
-        public int speaker;
+        public int id;
         [Multiline]
         public string message;
-        public Sprite avatar;
     }
 
     public List<ConversationMessage> messages;

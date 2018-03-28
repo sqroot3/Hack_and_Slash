@@ -11,13 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2410ae33346d6147a3069c486143de9, type: 3}
   m_Name: ConversationData
   m_EditorClassIdentifier: 
+  speak: {fileID: 11400000, guid: 60d68dc5b33ace34984923b5280dc2dd, type: 2}
   messages:
-  - speaker: 0
-    message: Multiline
-    avatar: {fileID: 0}
-  - speaker: 0
-    message: asrasrasra
-    avatar: {fileID: 0}
-  - speaker: 0
-    message: asatetaetaetaet
-    avatar: {fileID: 0}
+  - id: 0
+    message: What is this place...
+  - id: 1
+    message: I don't know
+  - id: 0
+    message: I want to leave!

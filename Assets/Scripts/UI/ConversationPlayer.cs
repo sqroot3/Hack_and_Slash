@@ -23,6 +23,7 @@ public class ConversationPlayer : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            if(currentMessage + 1 <= conversation.messages.Count)
             SetMessage(currentMessage++);
         }
     }
@@ -30,22 +31,6 @@ public class ConversationPlayer : MonoBehaviour {
     void SetMessage(int messageNumber)
     {
         text.text = conversation.messages[messageNumber].message;
-        setSpeakerPic(conversation.messages[messageNumber].speaker);
-    }
-	
-	void setSpeakerPic(int speaker)
-    {
-        switch(speaker)
-        {
-            case 0:
-                image.material.color = Color.red;
-                break;
-            case 1:
-                image.material.color = Color.blue;
-                break;
-            default:
-                image.material.color = Color.white;
-                break;
-        }
+        image.sprite = conversation.speak.speakers[conversation.messages[messageNumber].id].avatar;
     }
 }
