@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-
-    //rigidbody instance - will move this
+    
     private Rigidbody rb;
 
     [SerializeField] private float jumpForce = 400f;
@@ -29,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 
         if (!groundCheck)
-            Debug.LogError("Ground check transform not assigned!");
+            Debugger.DebugMessage("PlayerMovement", "Ground check transform not assigned!");
     }
 
     private void FixedUpdate()
@@ -64,7 +63,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Move(bool jump)
     {
-        Debug.Log("Grounded: " + grounded + " Jump: " + jump);
+        Debugger.DebugMessage("PlayerMovement", "Grounded: " + grounded + " Jump: " + jump);
 
         //forward/backward & sideways movement
         if(grounded || airControl)
