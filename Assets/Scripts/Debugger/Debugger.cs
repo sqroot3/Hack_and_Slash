@@ -10,6 +10,7 @@ public class Debugger : MonoBehaviour {
     {
         _DBG_PLAYER_MOVEMENT = 0,
         _DBG_PLAYER_HEALTH,
+        _DBG_ENEMY_HEALTH,
         _DBG_COUNT
     }
 
@@ -61,6 +62,8 @@ public class Debugger : MonoBehaviour {
                 return (int)DEBUG._DBG_PLAYER_MOVEMENT;
             case "PlayerHealth":
                 return (int)DEBUG._DBG_PLAYER_HEALTH;
+            case "EnemyHealth":
+                return (int)DEBUG._DBG_ENEMY_HEALTH;
             default:
                 return -1;
         }

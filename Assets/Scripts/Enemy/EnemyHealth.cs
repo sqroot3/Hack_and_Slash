@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
+public class EnemyHealth : MonoBehaviour {
 
     [SerializeField] private float startingHealth = 100f;
 
     private float currentHealth;
-    
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -16,19 +16,19 @@ public class PlayerHealth : MonoBehaviour {
     public void Damage(float amount)
     {
         currentHealth -= amount;
-        Debugger.DebugMessage("PlayerHealth", "Player has lost " + amount + " hp.Current hp: " + currentHealth);
+        Debugger.DebugMessage("EnemyHealth", "Enemy has lost " + amount + " hp.Current hp: " + currentHealth);
         if (currentHealth <= 0)
             OnDeath();
     }
 
     public void OnDeath()
     {
-        Debugger.DebugMessage("PlayerHealth", "Player has died");
+        Debugger.DebugMessage("EnemyHealth", "Enemy has died");
     }
 
     public void Heal(float amount)
     {
         currentHealth += amount;
-        Debugger.DebugMessage("PlayerHealth", "Player has recovered " + amount + " hp. Current hp: " + currentHealth);
+        Debugger.DebugMessage("EnemyHealth", "Enemy has recovered " + amount + " hp. Current hp: " + currentHealth);
     }
 }
