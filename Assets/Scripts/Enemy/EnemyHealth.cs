@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour {
         if (currentHealth <= 0)
             OnDeath();
     }
-
+    //hi
     public void OnDeath()
     {
         Debugger.DebugMessage("EnemyHealth", "Enemy has died");
