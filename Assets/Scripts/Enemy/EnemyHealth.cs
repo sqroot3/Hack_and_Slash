@@ -31,4 +31,9 @@ public class EnemyHealth : MonoBehaviour {
         currentHealth += amount;
         Debugger.DebugMessage("EnemyHealth", "Enemy has recovered " + amount + " hp. Current hp: " + currentHealth);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       //Debug.Log(collision.collider.tag);
+    }
 }
