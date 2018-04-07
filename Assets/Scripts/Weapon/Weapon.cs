@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour {
     private Animator anim;
     private Rigidbody playerRB;
     private const string AttackParam = "isAttacking";
+    private const string SwordState = "Sword";
+    private bool isSwing = false;
 
 	void Awake()
     {
@@ -21,15 +23,28 @@ public class Weapon : MonoBehaviour {
 
     public void OnSwing()
     {
-        anim.SetBool(AttackParam, true);
-        //anim.SetBool(AttackParam, false);
+        //if not already swinging
+        if(!anim.GetCurrentAnimatorStateInfo(0).IsName(SwordState))
+        {
+            anim.SetBool(AttackParam, true);
+            isSwing = true;
+        }
     }
-
+    
     public void OnTriggerEnter(Collider other)
     {
         //hit an enemy/sth - reset anim
-        Debug.Log(other.tag);
-        anim.SetBool(AttackParam, false);
+        if(other.tag == "Enemy" && isSwing)
+        {
+            Debug.Log("Hit enemy!");
+            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+            enemy.Damage(20f);
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        isSwing = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,4 +58,8 @@ public class Weapon : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        Debug.Log("OnSwing: " + anim.GetBool(AttackParam));
+    }
 }
