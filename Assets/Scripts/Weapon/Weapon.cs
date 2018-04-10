@@ -60,6 +60,6 @@ public class Weapon : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log("OnSwing: " + anim.GetBool(AttackParam));
+        //Debug.Log("OnSwing: " + anim.GetBool(AttackParam));
     }
 }
