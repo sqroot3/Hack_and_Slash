@@ -30,9 +30,12 @@ public class EnemyMovement : MonoBehaviour {
     {
         Vector3 vecEP = player.transform.position - transform.position;
 
+        return !(vecEP.z > 0.30f);
+        /*
         if (vecEP.z > 0.30) //behind player
             return true;
 
         return false;
+        */
     }
 }
