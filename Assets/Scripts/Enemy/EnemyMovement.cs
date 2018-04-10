@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
+    /*
+     * For AI: whenever deciding what to go to,
+     * evaluate distance to closest tree 
+     * 
+     */
+
     [SerializeField] private GameObject player;
     private PlayerMovement playerMovement;
     private EnemyAttack attack;
+
+    private List<Tree> trees;
 
 	// Use this for initialization
 	void Start () {
         attack = GetComponent<EnemyAttack>();
         playerMovement = player.GetComponent<PlayerMovement>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        initializeTrees();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (!IsPlayerBehind())
         {
             attack.OnAttack();
@@ -31,11 +40,17 @@ public class EnemyMovement : MonoBehaviour {
         Vector3 vecEP = player.transform.position - transform.position;
 
         return !(vecEP.z > 0.30f);
-        /*
-        if (vecEP.z > 0.30) //behind player
-            return true;
+    }
 
-        return false;
-        */
+    void initializeTrees()
+    {
+        
+    }
+
+    //determine closest tree
+    public Tree getClosestTree()
+    {
+
+        
     }
 }

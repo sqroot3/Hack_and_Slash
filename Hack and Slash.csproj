@@ -328,6 +328,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Tree\Tree.cs" />
     <Compile Include="Assets\Scripts\UI\Conversation.cs" />
     <Compile Include="Assets\Scripts\UI\ConversationPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\Speaker.cs" />
