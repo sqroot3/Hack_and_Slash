@@ -47,10 +47,12 @@ public class EnemyMovement : MonoBehaviour {
         
     }
 
+    /*
     //determine closest tree
     public Tree getClosestTree()
     {
-
+        
         
     }
+    */
 }

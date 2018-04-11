@@ -111,7 +111,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 442}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 935
+  controlID: 660
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 936
+  controlID: 694
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,8 +154,8 @@ MonoBehaviour:
     y: 0
     width: 947
     height: 485
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -180,8 +180,8 @@ MonoBehaviour:
     y: 485
     width: 947
     height: 462
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -205,8 +205,8 @@ MonoBehaviour:
     y: 0
     width: 266
     height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -291,7 +291,7 @@ MonoBehaviour:
     width: 945
     height: 441
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -321,18 +321,18 @@ MonoBehaviour:
       y: 17
       width: 945
       height: 424
-    m_Scale: {x: 1.1174303, y: 1.1174303}
-    m_Translation: {x: 428.36536, y: 203.36694}
+    m_Scale: {x: 1.0513903, y: 1.0513903}
+    m_Translation: {x: 448.21808, y: 202.60635}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -383.3486
-      y: -181.9952
-      width: 845.6903
-      height: 379.442
+      x: -426.30988
+      y: -192.70328
+      width: 898.8099
+      height: 403.27554
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
@@ -374,9 +374,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.7747444, y: 1.6730229, z: -1.3302795}
+    m_Target: {x: 6.0481167, y: 0.5220704, z: 3.748682}
     speed: 2
-    m_Value: {x: 1.7747444, y: 1.6730229, z: -1.3302795}
+    m_Value: {x: 6.0481167, y: 0.5220704, z: 3.748682}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -400,13 +400,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.09720652, y: -0.25791484, z: 0.02609126, w: 0.9609111}
+    m_Target: {x: -0.13169459, y: 0.41803786, z: -0.061393604, w: -0.89673394}
     speed: 2
-    m_Value: {x: -0.09720652, y: 0.25791484, z: -0.026091263, w: -0.96091115}
+    m_Value: {x: -0.13169459, y: 0.41803786, z: -0.061393604, w: -0.89673394}
   m_Size:
-    m_Target: 2.8578837
+    m_Target: 19.628115
     speed: 2
-    m_Value: 2.8578837
+    m_Value: 19.628115
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -509,26 +509,26 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 96fbffff00000000
+    m_ExpandedIDs: dadcfeff1657ffffdc5cffffbafaffff000000006a2a00000a330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: SwordPivot
+      m_OriginalName: SwordPivot
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10874
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
   m_ExpandedScenes:
-  - Core
+  - Demo
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -571,19 +571,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Tree
+    - Assets/Manager
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Tree
+  - Assets/Manager
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\lago.matias\Desktop\Hack and Slash
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a42b0000
-    m_LastClickedID: 11172
-    m_ExpandedIDs: 0000000058290000ce290000ea290000be2a000000ca9a3bffffff7f
+    m_SelectedIDs: f82a0000
+    m_LastClickedID: 11000
+    m_ExpandedIDs: 0000000088290000022a00001e2a0000ee2a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -611,7 +611,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000058290000ce290000ea290000be2a000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000088290000022a00001e2a0000ee2a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -755,5 +755,5 @@ MonoBehaviour:
     x: 1492
     y: 92
     width: 428
-    height: 966
+    height: 926
   m_PersistentViewDataDictionary: {fileID: 0}
