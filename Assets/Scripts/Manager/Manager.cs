@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour {
 
-    public static List<Tree> trees;
+    public static List<Tree> trees = new List<Tree>();
 
 	// Use this for initialization
 	void Start () {

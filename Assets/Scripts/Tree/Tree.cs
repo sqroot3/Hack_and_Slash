@@ -9,6 +9,12 @@ public class Tree : MonoBehaviour {
     [SerializeField]
     private GameObject player;
 
+    public bool OnFire
+    {
+        get { return onFire; }
+        set { onFire = value; }
+    }
+
     void ToggleFire()
     {
         onFire = !onFire;
