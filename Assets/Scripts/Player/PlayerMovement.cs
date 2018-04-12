@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayers;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private GameObject cameraRig;
 
+    private CameraMovement camera;
     private const float GroundedRadius = .2f;
 
     private string[] jumpAxis = { "Jump", "JumpJoy" };
@@ -29,6 +31,8 @@ public class PlayerMovement : MonoBehaviour {
 
         if (!groundCheck)
             Debugger.DebugMessage("PlayerMovement", "Ground check transform not assigned!");
+
+        camera = cameraRig.GetComponent<CameraMovement>();
     }
 
     private void FixedUpdate()
@@ -68,13 +72,23 @@ public class PlayerMovement : MonoBehaviour {
         //forward/backward & sideways movement
         if(grounded || airControl)
         {
-            rb.velocity = new Vector3(movement[1] * moveSpeed, rb.velocity.y, movement[0] * moveSpeed);
+            /*
+            //Movement should be interpreted wrt camera's lookat
+            rb.velocity = transform.forward * movement[0] * moveSpeed + transform.right * movement[1] * moveSpeed;
+            //rb.velocity = new Vector3(movement[1] * moveSpeed, rb.velocity.y, movement[0] * moveSpeed);
+            camera.Move(rb.velocity);
+            */
+
+            //@TODO: Problem - Camera and movement work fine when not rotating,
+            //But simultaneous rotation & movement is not taken care of
+            rb.velocity = transform.forward * movement[0] * moveSpeed + transform.right * movement[1] * moveSpeed;
+            
         }
         
         //vertical movement
         if(grounded && jump)
         {
-            rb.AddForce(new Vector3(0f, jumpForce));
+            rb.AddForce(new Vector3(0f, jumpForce)); 
             grounded = false;
         }
     }
