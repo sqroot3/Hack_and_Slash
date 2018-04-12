@@ -41,7 +41,7 @@ public class EnemyAttack : MonoBehaviour {
         //Get the distance from enemy to player
         float distance = Vector3.Distance(transform.position, playerMovement.transform.position);
 
-        Debug.Log("Distance: " + distance);
+        //Debug.Log("Distance: " + distance);
         //if the distance is small enough to be covered by the attack radius
         if(distance <= attackRadius)
         {
