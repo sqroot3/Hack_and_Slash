@@ -5,6 +5,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour {
 
     public static List<Tree> trees = new List<Tree>();
+    public static int numOfBurningTrees = 0;
 
 	// Use this for initialization
 	void Start () {

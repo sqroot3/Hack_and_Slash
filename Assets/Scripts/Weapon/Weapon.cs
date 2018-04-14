@@ -38,7 +38,10 @@ public class Weapon : MonoBehaviour {
         {
             Debug.Log("Hit enemy!");
             EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-            enemy.Damage(20f);
+            EnemyMovement movement = other.GetComponent<EnemyMovement>();
+            //Sneak attack will instantly kill enemies
+            float damage = (movement.IsPlayerBehind()) ? 9999f : 20f;
+            enemy.Damage(damage);
         }
     }
 

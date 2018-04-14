@@ -72,17 +72,8 @@ public class PlayerMovement : MonoBehaviour {
         //forward/backward & sideways movement
         if(grounded || airControl)
         {
-            /*
-            //Movement should be interpreted wrt camera's lookat
+            //movement wrt camera's lookat
             rb.velocity = transform.forward * movement[0] * moveSpeed + transform.right * movement[1] * moveSpeed;
-            //rb.velocity = new Vector3(movement[1] * moveSpeed, rb.velocity.y, movement[0] * moveSpeed);
-            camera.Move(rb.velocity);
-            */
-
-            //@TODO: Problem - Camera and movement work fine when not rotating,
-            //But simultaneous rotation & movement is not taken care of
-            rb.velocity = transform.forward * movement[0] * moveSpeed + transform.right * movement[1] * moveSpeed;
-            
         }
         
         //vertical movement
