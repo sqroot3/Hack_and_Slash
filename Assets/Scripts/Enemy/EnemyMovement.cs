@@ -62,7 +62,8 @@ public class EnemyMovement : MonoBehaviour {
             if(isKinematic)
             {
                 //if kinematic, go to next station and set patrolling state
-                GoToNextStation();
+                if(!agent.pathPending && agent.remainingDistance < 0.5f)
+                    GoToNextStation();
                 attack.State = 3;
             }
             else
