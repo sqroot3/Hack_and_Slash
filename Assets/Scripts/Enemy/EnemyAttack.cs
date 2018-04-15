@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
     [SerializeField] private GameObject player;
-    [SerializeField] private float attackRadius = 2.0f;
+    [SerializeField] private float detectRadius = 2.0f;
+    [SerializeField] private float attackRadius = 1.0f;
     private PlayerMovement playerMovement;
     private MeshRenderer renderer;
     private int state = 0;
-    //0 - calm
-    //1 - attacking
+
+    public int State
+    {
+        get { return state; }
+        set { state = value; }
+    }
+
+    public float DetectRadius
+    {
+        get { return detectRadius; }
+        set { detectRadius = value; }
+    }
+    //0 - calm (white)
+    //1 - detected (yellow)
+    //2 - attacking (red)
+    //3 - patrolling (blue)
+    //4 - tree (green)
     
     
 
@@ -27,7 +43,16 @@ public class EnemyAttack : MonoBehaviour {
                 renderer.material.color = Color.white;
                 break;
             case 1:
+                renderer.material.color = Color.yellow;
+                break;
+            case 2:
                 renderer.material.color = Color.red;
+                break;
+            case 3:
+                renderer.material.color = Color.blue;
+                break;
+            case 4:
+                renderer.material.color = Color.green;
                 break;
             default:
                 renderer.material.color = Color.white;
@@ -37,27 +62,24 @@ public class EnemyAttack : MonoBehaviour {
 
     public void OnAttack()
     {
-
-        //Get the distance from enemy to player
-        float distance = Vector3.Distance(transform.position, playerMovement.transform.position);
-
-        //Debug.Log("Distance: " + distance);
-        //if the distance is small enough to be covered by the attack radius
-        if(distance <= attackRadius)
+        if(IsInAttackRadius())
         {
             Debug.Log("attacked!");
             //set its color to an "attacking" state - just for demo purposes
-            setState(1);
+            State = 2;
         }
         else
         {
             //if out of reach, set its color back to white - demo purposes
-            setState(0);
+            State = 0;
         }
     }
 
-    public void setState(int _state)
+    public bool IsInAttackRadius()
     {
-        state = _state;
+        //Get the distance from enemy to player
+        float distance = Vector3.Distance(transform.position, playerMovement.transform.position);
+
+        return (distance <= attackRadius);
     }
 }

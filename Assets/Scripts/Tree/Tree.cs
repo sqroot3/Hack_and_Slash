@@ -12,16 +12,32 @@ public class Tree : MonoBehaviour {
     public bool OnFire
     {
         get { return onFire; }
-        set { onFire = value; }
     }
 
     void ToggleFire()
     {
-        onFire = !onFire;
+        if(onFire)
+        {
+            onFire = false;
+            Manager.numOfBurningTrees--;
+        }
+        else
+        {
+            onFire = true;
+            Manager.numOfBurningTrees++;
+        }
     }
     
     public float distance(Vector3 src)
     {
         return Vector3.Distance(transform.position, src);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            ToggleFire();
+        }
     }
 }
