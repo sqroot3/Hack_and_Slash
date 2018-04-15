@@ -9,6 +9,10 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //lock mouse into place, make it invisible
+        //Note: should keep track of this on menu/settings etc
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         InitializeTrees();
         Debug.Log("Initialized trees!");
 	}
