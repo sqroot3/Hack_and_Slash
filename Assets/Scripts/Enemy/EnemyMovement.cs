@@ -13,6 +13,9 @@ public class EnemyMovement : MonoBehaviour {
 
     [SerializeField] private GameObject player;
     [SerializeField] private int treeRayColor;
+    [SerializeField] private bool isKinematic;
+    [SerializeField] private Transform[] stations;
+    private int currentStation = 0;
     private PlayerMovement playerMovement;
     private EnemyAttack attack;
     private NavMeshAgent agent;
@@ -22,6 +25,7 @@ public class EnemyMovement : MonoBehaviour {
         attack = GetComponent<EnemyAttack>();
         playerMovement = player.GetComponent<PlayerMovement>();
         agent = GetComponent<NavMeshAgent>();
+        agent.autoBraking = false;
     }
 
     // Update is called once per frame
@@ -31,6 +35,7 @@ public class EnemyMovement : MonoBehaviour {
         if (!IsPlayerBehind() && IsPlayerInRange())
         {
             //player is now detected, AI should now get closer to him
+            attack.State = 1;
             agent.SetDestination(player.transform.position);
             if(attack.IsInAttackRadius())
             {
@@ -45,7 +50,7 @@ public class EnemyMovement : MonoBehaviour {
             //go to closest burning tree
             Tree t = getClosestBurningTree();
             agent.SetDestination(t.transform.position);
-            attack.State = 0;
+            attack.State = 4;
 
         }
         //ELSE, default to your calm/patrol state depending on enemy type
@@ -54,8 +59,20 @@ public class EnemyMovement : MonoBehaviour {
             //set it back to calm, and stay still
             //@TODO: implement a "patrolling" state - enemies of type dynamic should revert to it
             //static enemies will stand still
-            agent.SetDestination(transform.position);
-            attack.State = 0;
+            if(isKinematic)
+            {
+                //if kinematic, go to next station and set patrolling state
+                GoToNextStation();
+                attack.State = 3;
+            }
+            else
+            {
+                //if static, stay in place
+                agent.SetDestination(transform.position);
+                attack.State = 0;
+            }
+            
+            
         }
         
         /*
@@ -82,6 +99,15 @@ public class EnemyMovement : MonoBehaviour {
             }
         }
         */
+    }
+
+    void GoToNextStation()
+    {
+        if (stations.Length == 0) return;
+
+        agent.destination = stations[currentStation].position;
+        currentStation = (currentStation + 1) % stations.Length;
+
     }
 
     public bool IsPlayerBehind()

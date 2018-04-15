@@ -21,8 +21,11 @@ public class EnemyAttack : MonoBehaviour {
         get { return detectRadius; }
         set { detectRadius = value; }
     }
-    //0 - calm
-    //1 - attacking
+    //0 - calm (white)
+    //1 - detected (yellow)
+    //2 - attacking (red)
+    //3 - patrolling (blue)
+    //4 - tree (green)
     
     
 
@@ -40,7 +43,16 @@ public class EnemyAttack : MonoBehaviour {
                 renderer.material.color = Color.white;
                 break;
             case 1:
+                renderer.material.color = Color.yellow;
+                break;
+            case 2:
                 renderer.material.color = Color.red;
+                break;
+            case 3:
+                renderer.material.color = Color.blue;
+                break;
+            case 4:
+                renderer.material.color = Color.green;
                 break;
             default:
                 renderer.material.color = Color.white;
@@ -54,7 +66,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             Debug.Log("attacked!");
             //set its color to an "attacking" state - just for demo purposes
-            State = 1;
+            State = 2;
         }
         else
         {
