@@ -43,6 +43,12 @@ public class Weapon : MonoBehaviour {
             float damage = (movement.IsPlayerBehind()) ? 9999f : 20f;
             enemy.Damage(damage);
         }
+        if(other.tag == "Tree" && isSwing)
+        {
+            Debug.Log("Hit tree & toggled it's fire!");
+            Tree tree = other.GetComponent<Tree>();
+            tree.ToggleFire();
+        }
     }
 
     public void OnTriggerExit(Collider other)

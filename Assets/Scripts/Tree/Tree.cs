@@ -14,7 +14,7 @@ public class Tree : MonoBehaviour {
         get { return onFire; }
     }
 
-    void ToggleFire()
+    public void ToggleFire()
     {
         if(onFire)
         {

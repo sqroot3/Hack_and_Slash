@@ -20,7 +20,9 @@ public class Spell : MonoBehaviour {
 
     public void OnSpell()
     {
-        EnemyHealth enemy = getAimingEnemy();
+        EnemyHealth enemy = null;
+        Tree tree = null;
+        GetAimingEntity(out enemy, out tree);
         if(enemy)
         {
             enemy.Damage(damage);
@@ -32,27 +34,49 @@ public class Spell : MonoBehaviour {
              */
             Debug.Log("damaged an enemy with magic!");
         }
+        else if(tree)
+        {
+            tree.ToggleFire();
+            Debug.Log("Toggled tree's fire!");
+        }
     }
 
-    public EnemyHealth getAimingEnemy()
+    public void GetAimingEntity(out EnemyHealth _enemy, out Tree _tree)
     {
-        //cast a ray in the direction of cursor and see if it collides with any enemies
-        //only cast rays against enemies since its what we're interested (layer 11)
+        //cast a ray in the direction of cursor and see if it collides with any enemies/trees
+        //only cast rays against enemies/trees since its what we're interested (layer 11)
         //raycast itself takes care of "attack range" - ray will only be that long,
-        // if enemies are out of range, they won't be considered and the hit will be "null"
+        // if enemies/trees are out of range, they won't be considered and the hit will be "null"
 
-        int layerMask = 1 << 11;
+        int pMask = 1 << 11;
+        int tMask = 1 << 12;
+
+        int layerMask = pMask | tMask;
 
         Ray r = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
         Physics.Raycast(r, out hitInfo, range, layerMask);
 
-        if(hitInfo.collider != null && hitInfo.collider.tag == "Enemy")
-        {
-            EnemyHealth enemy = hitInfo.collider.GetComponent<EnemyHealth>();
-            return enemy;
-        }
+        _tree = null;
+        _enemy = null;
 
-        return null;
+        if (hitInfo.collider != null)
+        {
+            switch(hitInfo.collider.tag)
+            {
+                case "Enemy":
+                    _enemy = hitInfo.collider.GetComponent<EnemyHealth>();
+                    _tree = null;
+                    break;
+                case "Tree":
+                    _tree = hitInfo.collider.GetComponent<Tree>();
+                    _enemy = null;
+                    break;
+                default:
+                    _tree = null;
+                    _enemy = null;
+                    break;
+            }
+        }
     }
 }
