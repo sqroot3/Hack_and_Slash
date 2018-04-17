@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour {
             isSwing = true;
         }
     }
-    
+
     public void OnTriggerEnter(Collider other)
     {
         //hit an enemy/sth - reset anim
