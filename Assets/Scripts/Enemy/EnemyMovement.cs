@@ -56,9 +56,6 @@ public class EnemyMovement : MonoBehaviour {
         //ELSE, default to your calm/patrol state depending on enemy type
         else
         {
-            //set it back to calm, and stay still
-            //@TODO: implement a "patrolling" state - enemies of type dynamic should revert to it
-            //static enemies will stand still
             if(isKinematic)
             {
                 //if kinematic, go to next station and set patrolling state

@@ -1983,6 +1983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  range: 50
 --- !u!4 &848734770 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4179528309762662, guid: 0effc7ced2486154085ac4ae412d0564,
