@@ -298,6 +298,7 @@
     <Compile Include="Assets\Scripts\UI\Conversation.cs" />
     <Compile Include="Assets\Scripts\UI\ConversationPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\Speaker.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Spell.cs" />
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

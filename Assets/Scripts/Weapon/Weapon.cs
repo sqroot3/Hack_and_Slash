@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour {
             isSwing = true;
         }
     }
-    
+
     public void OnTriggerEnter(Collider other)
     {
         //hit an enemy/sth - reset anim
@@ -42,6 +42,12 @@ public class Weapon : MonoBehaviour {
             //Sneak attack will instantly kill enemies
             float damage = (movement.IsPlayerBehind()) ? 9999f : 20f;
             enemy.Damage(damage);
+        }
+        if(other.tag == "Tree" && isSwing)
+        {
+            Debug.Log("Hit tree & toggled it's fire!");
+            Tree tree = other.GetComponent<Tree>();
+            tree.ToggleFire();
         }
     }
 

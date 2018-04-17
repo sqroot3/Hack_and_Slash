@@ -1968,13 +1968,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c5331d7c2af284598e000b6d735277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 2800000, guid: dbc6557134be7db448613d00d6c3f9c0, type: 3}
   damage: 3
-  currentWeapon: {fileID: 1271453109}
+  book: {fileID: 1597029481}
+--- !u!114 &848734769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848734764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9412f262b1dc9da4095d39df52291a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
 --- !u!4 &848734770 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4179528309762662, guid: 0effc7ced2486154085ac4ae412d0564,
     type: 2}
   m_PrefabInternal: {fileID: 848734763}
+--- !u!1001 &1030621141
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1597029482}
+    m_Modifications:
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+  m_IsPrefabParent: 0
+--- !u!4 &1030621142 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: ecedb9be23c15e94bb9659f202d33d29, type: 3}
+  m_PrefabInternal: {fileID: 1030621141}
 --- !u!1001 &1121286037
 Prefab:
   m_ObjectHideFlags: 0
@@ -2518,6 +2577,35 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1597029481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1597029482}
+  m_Layer: 10
+  m_Name: Book
+  m_TagString: Book
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1597029482
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597029481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2, y: 0.225, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1030621142}
+  m_Father: {fileID: 848734770}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1612994371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,7 +2638,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 11d015daade766544a27f87663549b71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
