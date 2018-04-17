@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour {
     public void OnDeath()
     {
         Debugger.DebugMessage("PlayerHealth", "Player has died");
+        Manager.playerDied = true;
     }
 
     public void Heal(float amount)

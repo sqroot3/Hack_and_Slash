@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private LayerMask groundLayers;
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject cameraRig;
+    [SerializeField] private float deathY = 0.45f;
 
     private CameraMovement camera;
     private const float GroundedRadius = .2f;
@@ -53,6 +54,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
+        
+        if(transform.position.y <= deathY)
+        {
+            PlayerHealth health = GetComponent<PlayerHealth>();
+            health.OnDeath();
+            Debug.Log("Died from a fall");
+        }
+
         //get input from keyboard
         if (!isJoystick)
         {
@@ -63,6 +72,11 @@ public class PlayerMovement : MonoBehaviour {
 
         Move(jump);
         jump = false;
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 
     public void Move(bool jump)

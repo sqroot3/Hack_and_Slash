@@ -321,11 +321,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Manager\Manager.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Debugger\Debugger.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Manager\Manager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
@@ -333,6 +334,7 @@
     <Compile Include="Assets\Scripts\UI\Conversation.cs" />
     <Compile Include="Assets\Scripts\UI\ConversationPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\Speaker.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Spell.cs" />
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
