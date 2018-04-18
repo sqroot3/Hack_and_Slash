@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour {
      */
 
     [SerializeField] private GameObject player;
-    [SerializeField] private int treeRayColor;
     [SerializeField] private bool isKinematic;
     [SerializeField] private Transform[] stations;
     private int currentStation = 0;
@@ -72,31 +71,6 @@ public class EnemyMovement : MonoBehaviour {
             
             
         }
-        
-        /*
-
-        //Demo - draw ray to closest tree
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            Tree t = getClosestTree();
-            if(t)
-            {
-                Vector3 vecET = t.transform.position - transform.position;
-                Debug.DrawRay(transform.position, vecET, getTreeRayColor(treeRayColor));
-                agent.SetDestination(player.transform.position);
-            }
-        }
-        //Demo - draw ray to closest burning tree
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Tree t = getClosestBurningTree();
-            if (t)
-            {
-                Vector3 vecET = t.transform.position - transform.position;
-                Debug.DrawRay(transform.position, vecET, getTreeRayColor(treeRayColor));
-            }
-        }
-        */
     }
 
     void GoToNextStation()

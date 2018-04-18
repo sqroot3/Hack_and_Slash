@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 
         if (!groundCheck)
-            Debugger.DebugMessage("PlayerMovement", "Ground check transform not assigned!");
+            Debug.Log("Ground check transform not assigned!");
 
         camera = cameraRig.GetComponent<CameraMovement>();
     }
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Update()
     {
         
-        if(transform.position.y <= deathY)
+        if(transform.position.y <= deathY && !Manager.playerDied)
         {
             PlayerHealth health = GetComponent<PlayerHealth>();
             health.OnDeath();
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Move(bool jump)
     {
-        Debugger.DebugMessage("PlayerMovement", "Grounded: " + grounded + " Jump: " + jump);
+        //Debug.Log("Grounded: " + grounded + " Jump: " + jump);
 
         //forward/backward & sideways movement
         if(grounded || airControl)

@@ -49,7 +49,7 @@ public class Manager : MonoBehaviour {
         }
         
         playerDied = false;
-        LoadLevel("AI");
+        LoadLevel("Manager");
     }
 
     private IEnumerator RoundStarting()
