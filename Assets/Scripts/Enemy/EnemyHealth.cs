@@ -33,6 +33,7 @@ public class EnemyHealth : MonoBehaviour {
     public void OnDeath()
     {
         Destroy(gameObject);
+        Manager.aliveEnemies--;
     }
 
     public void Heal(float amount)
