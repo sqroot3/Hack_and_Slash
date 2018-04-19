@@ -22,6 +22,7 @@ public class Manager : MonoBehaviour {
 
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private float gameTimer;
     private Player player = new Player();
 
 
@@ -30,8 +31,8 @@ public class Manager : MonoBehaviour {
     public static int aliveEnemies = 0;
     public static bool playerDied = false;
     private bool won = false;
-    private float startWait = 0f;
-    private float endWait = 0f;
+    [SerializeField] private float startWait = 0f;
+    [SerializeField] private float endWait = 0f;
 
 
 	// Use this for initialization
@@ -72,6 +73,7 @@ public class Manager : MonoBehaviour {
 
         //win/lose scenario
 
+        //@TODO: make win/loss implemented with gui too
         if (won)
         {
             Debug.Log("You won! Restarting level!");
@@ -96,9 +98,11 @@ public class Manager : MonoBehaviour {
 
     private IEnumerator RoundPlaying()
     {
-        
-        while (aliveEnemies > 0 && !playerDied)
+        while (aliveEnemies > 0 && !playerDied && gameTimer > 0f)
         {
+            //@TODO: implement game timer with UI (possibly slider)
+            gameTimer -= Time.deltaTime;
+            Debug.Log("Time Left: " + gameTimer);
             yield return null;
         }
     }
@@ -106,7 +110,7 @@ public class Manager : MonoBehaviour {
     private IEnumerator RoundEnding()
     {
         //decide if won/lost
-        won = !(playerDied);
+        won = !(aliveEnemies > 0);
         yield return endWait;
     }
     

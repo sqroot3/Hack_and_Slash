@@ -1797,6 +1797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 848734764}
+  gameTimer: 10
+  startWait: 0
+  endWait: 3
 --- !u!1001 &1556822218
 Prefab:
   m_ObjectHideFlags: 0
