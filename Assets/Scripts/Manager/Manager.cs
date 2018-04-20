@@ -101,7 +101,7 @@ public class Manager : MonoBehaviour {
         while (aliveEnemies > 0 && !playerDied && gameTimer > 0f)
         {
             //@TODO: implement game timer with UI (possibly slider)
-            gameTimer -= Time.deltaTime;
+            //gameTimer -= Time.deltaTime;
             Debug.Log("Time Left: " + gameTimer);
             yield return null;
         }

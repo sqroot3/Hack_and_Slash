@@ -12,8 +12,12 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayers;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float dirtMultiplier;
+    [SerializeField] private float snowMultiplier;
     [SerializeField] private GameObject cameraRig;
     [SerializeField] private float deathY = 0.45f;
+
+    private float speed;
 
     private CameraMovement camera;
     private const float GroundedRadius = .2f;
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
             Debug.Log("Ground check transform not assigned!");
 
         camera = cameraRig.GetComponent<CameraMovement>();
+        speed = moveSpeed;
     }
 
     private void FixedUpdate()
@@ -76,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void LateUpdate()
     {
-        
+        Debug.Log("Velocity: " + rb.velocity);
     }
 
     public void Move(bool jump)
@@ -87,7 +92,7 @@ public class PlayerMovement : MonoBehaviour {
         if(grounded || airControl)
         {
             //movement wrt camera's lookat
-            rb.velocity = transform.forward * movement[0] * moveSpeed + transform.right * movement[1] * moveSpeed;
+            rb.velocity = transform.forward * movement[0] * speed + transform.right * movement[1] * speed;
         }
         
         //vertical movement
@@ -98,4 +103,25 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //handle entering in snow/dirt area triggers
+        if (other.tag == "Snow_Ground")
+        {
+            //player will be slower on snow
+            speed -= speed * snowMultiplier;
+        }
+        else if (other.tag == "Dirt_Ground")
+        {
+            //player will be faster on dirt
+            speed += speed * dirtMultiplier;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // as soon as area is left, reset speed to normal speed
+        if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
+            speed = moveSpeed;
+    }
 }

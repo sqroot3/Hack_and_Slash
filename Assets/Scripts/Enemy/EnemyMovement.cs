@@ -14,6 +14,9 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private bool isKinematic;
     [SerializeField] private Transform[] stations;
+    [SerializeField] private float speed;
+    [SerializeField] private float dirtMultiplier;
+    [SerializeField] private float snowMultiplier;
     private int currentStation = 0;
     private PlayerMovement playerMovement;
     private EnemyAttack attack;
@@ -25,6 +28,7 @@ public class EnemyMovement : MonoBehaviour {
         playerMovement = player.GetComponent<PlayerMovement>();
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
+        agent.speed = speed;
     }
 
     // Update is called once per frame
@@ -140,6 +144,28 @@ public class EnemyMovement : MonoBehaviour {
             case 3:     return Color.green;
             default:    return Color.white;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //handle entering in snow/dirt area triggers
+        if(other.tag == "Snow_Ground")
+        {
+            //enemies will be faster on snow
+            agent.speed += speed * snowMultiplier;
+        }
+        else if(other.tag == "Dirt_Ground")
+        {
+            //enemies will be slower on dirt
+            agent.speed -= speed * dirtMultiplier;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // as soon as area is left, reset speed to normal speed
+        if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
+            agent.speed = speed;
     }
 
 }

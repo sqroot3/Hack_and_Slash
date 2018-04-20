@@ -8,6 +8,8 @@ TagManager:
   - Pivot
   - Tree
   - Book
+  - Snow_Ground
+  - Dirt_Ground
   layers:
   - Default
   - TransparentFX
