@@ -1481,6 +1481,7 @@ MonoBehaviour:
   crosshair: {fileID: 2800000, guid: dbc6557134be7db448613d00d6c3f9c0, type: 3}
   damage: 3
   book: {fileID: 1597029481}
+  attackTime: 0.2
 --- !u!114 &848734769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,6 +1816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c566fb36fa1ff6429a805b148a326ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strikeTime: 1
+  strikeDamage: 20
 --- !u!95 &1271453110
 Animator:
   serializedVersion: 3

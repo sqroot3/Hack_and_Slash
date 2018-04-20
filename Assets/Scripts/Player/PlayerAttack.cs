@@ -8,15 +8,21 @@ public class PlayerAttack : MonoBehaviour {
     [SerializeField] private float damage = 3.0f;
     [SerializeField] private GameObject book;
     
+
     private string aimAxis = "Aim";
     private string attackAxis = "Attack";
     
     private Weapon sword;
     private Spell magic;
+
+    [SerializeField] private float attackTime = 1f;
+
     private int currentAttack = 0;
     //0 - sword
     //1 - magic
 
+    private int swings = 0;
+    private bool counting = false;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +32,7 @@ public class PlayerAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         //If aiming, set current weapon to magic, if not, then sword
         if (Input.GetButton(aimAxis))
         {
@@ -46,18 +53,29 @@ public class PlayerAttack : MonoBehaviour {
             book.SetActive(false);
         }
 
-        if(Input.GetButtonDown(attackAxis))
+        if (Input.GetButtonDown(attackAxis))
         {
             switch(currentAttack)
             {
                 case 0:
-                    sword.OnSwing();
+                    //@TODO: should combos be considered in tandem with an already going attack?
+                    // i.e, before first swing ends, if player clicks attack, second swing, and so on
+                    //sword.OnSwing();
                     break;
                 case 1:
                     magic.OnSpell();
                     break;
             }
         }
-            
-	}
+
+    }
+
+    private IEnumerator CountSwings()
+    {
+        counting = true;
+        yield return new WaitForSeconds(attackTime);
+        counting = false;
+        sword.OnSwing(swings);
+        swings = 0;
+    }
 }

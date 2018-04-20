@@ -4,7 +4,9 @@ using UnityEngine;
 
 
 public class Weapon : MonoBehaviour {
-
+    //strike time is time to count # hits for attack
+    [SerializeField] private float strikeTime = 1f;
+    [SerializeField] private float strikeDamage = 20f;
     private Animator anim;
     private Rigidbody playerRB;
     private const string AttackParam = "isAttacking";
@@ -31,6 +33,33 @@ public class Weapon : MonoBehaviour {
         }
     }
 
+    public void OnSwing(int swings)
+    {
+        //animation placeholder code here - should select 1 out of 3 anims to play
+        switch(swings)
+        {
+            case 1:
+                Debug.Log("Single swing!");
+                break;
+            case 2:
+                Debug.Log("Double swing!");
+                break;
+            case 3:
+                Debug.Log("Triple swing!");
+                break;
+        }
+
+        /*
+        //if not already swinging
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName(SwordState))
+        {
+            
+            anim.SetBool(AttackParam, true);
+            isSwing = true;
+        }
+        */
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         //hit an enemy/sth - reset anim
@@ -40,7 +69,7 @@ public class Weapon : MonoBehaviour {
             EnemyHealth enemy = other.GetComponent<EnemyHealth>();
             EnemyMovement movement = other.GetComponent<EnemyMovement>();
             //Sneak attack will instantly kill enemies
-            float damage = (movement.IsPlayerBehind()) ? 9999f : 20f;
+            float damage = (movement.IsPlayerBehind()) ? 9999f : strikeDamage;
             enemy.Damage(damage);
         }
         if(other.tag == "Tree" && isSwing)

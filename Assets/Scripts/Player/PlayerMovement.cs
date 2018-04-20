@@ -79,11 +79,6 @@ public class PlayerMovement : MonoBehaviour {
         jump = false;
     }
 
-    private void LateUpdate()
-    {
-        Debug.Log("Velocity: " + rb.velocity);
-    }
-
     public void Move(bool jump)
     {
         //Debug.Log("Grounded: " + grounded + " Jump: " + jump);
