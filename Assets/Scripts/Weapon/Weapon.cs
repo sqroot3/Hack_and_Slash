@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour {
     private const string AttackParam = "isAttacking";
     private const string SwordState = "Sword";
     private bool isSwing = false;
+    private int swings = 0;
 
 	void Awake()
     {
@@ -23,6 +24,7 @@ public class Weapon : MonoBehaviour {
         //sword = GetComponentInChildren<BoxCollider>();
     }
 
+    /*
     public void OnSwing()
     {
         //if not already swinging
@@ -31,33 +33,39 @@ public class Weapon : MonoBehaviour {
             anim.SetBool(AttackParam, true);
             isSwing = true;
         }
-    }
-
-    public void OnSwing(int swings)
-    {
-        //animation placeholder code here - should select 1 out of 3 anims to play
-        switch(swings)
+        //is midswing, check for second attack here
+        else
         {
-            case 1:
-                Debug.Log("Single swing!");
-                break;
-            case 2:
-                Debug.Log("Double swing!");
-                break;
-            case 3:
-                Debug.Log("Triple swing!");
-                break;
+            Debug.Log("Second hit combo!");
         }
+    }
+    */
 
-        /*
+    public void OnSwing()
+    {
+        //this is called whenever player presses the attack button
+        //should start the coroutine if not already on it
+        //else, do nothing
         //if not already swinging
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName(SwordState))
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName(SwordState) && !isSwing)
         {
-            
-            anim.SetBool(AttackParam, true);
+            StartCoroutine(SwordSwing());
             isSwing = true;
         }
-        */
+        //are in the middle of swing, want to increase this
+        else
+            ++swings;
+    }
+
+    public IEnumerator SwordSwing()
+    {
+        swings = 1;
+        yield return new WaitForSeconds(strikeTime);
+        //At this point, handle animation states according to value of swings
+        //@TODO: may want to use a swings variable in the animator
+        // to handle what anim to go to
+        Debug.Log("Swung " + swings + " times");
+        isSwing = false;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -98,6 +106,8 @@ public class Weapon : MonoBehaviour {
 
     private void Update()
     {
-        //Debug.Log("OnSwing: " + anim.GetBool(AttackParam));
+        Debug.Log("OnSwing: " + anim.GetBool(AttackParam));
+
+
     }
 }

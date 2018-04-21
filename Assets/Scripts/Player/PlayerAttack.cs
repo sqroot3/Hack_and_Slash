@@ -60,7 +60,8 @@ public class PlayerAttack : MonoBehaviour {
                 case 0:
                     //@TODO: should combos be considered in tandem with an already going attack?
                     // i.e, before first swing ends, if player clicks attack, second swing, and so on
-                    //sword.OnSwing();
+                    //StartCoroutine(sword.OnSwing(swings++));
+                    sword.OnSwing();
                     break;
                 case 1:
                     magic.OnSpell();
@@ -68,14 +69,5 @@ public class PlayerAttack : MonoBehaviour {
             }
         }
 
-    }
-
-    private IEnumerator CountSwings()
-    {
-        counting = true;
-        yield return new WaitForSeconds(attackTime);
-        counting = false;
-        sword.OnSwing(swings);
-        swings = 0;
     }
 }
