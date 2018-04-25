@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour {
     private Animator animator;
     private Rigidbody playerRB;
     private readonly int hashAttacking = Animator.StringToHash("attacking");
+    private bool isSwing = false;
 
 	void Awake()
     {
@@ -35,10 +36,17 @@ public class Weapon : MonoBehaviour {
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        isSwing = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && !isSwinging())
+        
+        if (other.tag == "Enemy" && !isSwinging() && !isSwing)
         {
+            isSwing = true;
             EnemyHealth enemy = other.GetComponent<EnemyHealth>();
 
             Vector3 hitLocation = new Vector3(other.transform.position.x, other.transform.position.y + enemy.labelHeight, other.transform.position.z);
@@ -47,8 +55,9 @@ public class Weapon : MonoBehaviour {
             Debug.DrawLine(hitLocation, enemy.transform.forward);
 
         }
-        else if (other.tag == "Tree" && !isSwinging())
+        else if (other.tag == "Tree" && !isSwinging() && !isSwing)
         {
+            isSwing = true;
             Debug.Log("Hit tree & toggled it's fire!");
             Tree tree = other.GetComponent<Tree>();
             tree.ToggleFire();
