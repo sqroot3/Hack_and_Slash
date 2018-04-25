@@ -4,26 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour {
-
-    /*
-     * Player "subclass" - needs to take care of player's attack/move/health 
-     * 
-     */
-    class Player
-    {
-        public PlayerMovement movement;
-        public PlayerHealth health;
-        public PlayerAttack attack;
-        public CameraMovement camera;
-
-        public Weapon sword;
-        public Spell magic;
-    }
-
-
-    [SerializeField] private GameObject playerPrefab;
+    
+    
     [SerializeField] private float gameTimer;
-    private Player player = new Player();
 
 
     public static List<Tree> trees = new List<Tree>();
@@ -37,8 +20,6 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //Fill player class from playerPrefab 
-        GetPlayerData();
 
         //lock mouse into place, make it invisible
         //Note: should keep track of this on menu/settings etc
@@ -49,16 +30,6 @@ public class Manager : MonoBehaviour {
         aliveEnemies = getNumberOfEnemies();
         StartCoroutine(GameLoop());
 	}
-
-    void GetPlayerData()
-    {
-        player.movement = playerPrefab.GetComponent<PlayerMovement>();
-        player.attack = playerPrefab.GetComponent<PlayerAttack>();
-        player.health = playerPrefab.GetComponent<PlayerHealth>();
-        player.sword = playerPrefab.GetComponentInChildren<Weapon>();
-        player.magic = playerPrefab.GetComponent<Spell>();
-        player.camera = playerPrefab.GetComponentInChildren<CameraMovement>();
-    }
 
     void LoadLevel(string levelName)
     {
@@ -90,8 +61,6 @@ public class Manager : MonoBehaviour {
     private IEnumerator RoundStarting()
     {
         //init stuff here
-        //player.movement.enabled = false;
-        //player.camera.enabled = false;
         yield return startWait;
        
     }
@@ -100,7 +69,7 @@ public class Manager : MonoBehaviour {
     {
         while (aliveEnemies > 0 && !playerDied && gameTimer > 0f)
         {
-            //@TODO: implement game timer with UI (possibly slider)
+            //@TODO: implement game timer with UI (possibly slider) & remove comment below
             //gameTimer -= Time.deltaTime;
             Debug.Log("Time Left: " + gameTimer);
             yield return null;

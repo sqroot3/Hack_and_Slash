@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour {
 
     [SerializeField] private Texture2D crosshair;
-    [SerializeField] private float damage = 3.0f;
     [SerializeField] private GameObject book;
     
 
     private string aimAxis = "Aim";
     private string attackAxis = "Attack";
-    
+    private readonly int hashAttacking = Animator.StringToHash("attacking");
+
     private Weapon sword;
     private Spell magic;
 
@@ -21,10 +21,7 @@ public class PlayerAttack : MonoBehaviour {
     //0 - sword
     //1 - magic
 
-    private int swings = 0;
-    private bool counting = false;
-
-	// Use this for initialization
+	
 	void Start () {
         sword = GetComponentInChildren<Weapon>();
         magic = GetComponent<Spell>();

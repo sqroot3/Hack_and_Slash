@@ -4,93 +4,24 @@ using UnityEngine;
 
 
 public class Weapon : MonoBehaviour {
-    //strike time is time to count # hits for attack
-    [SerializeField] private float strikeTime = 1f;
-    [SerializeField] private float strikeDamage = 20f;
-    private Animator anim;
+
+    [SerializeField] private float strikeDamage;
+    private Animator animator;
     private Rigidbody playerRB;
-    private const string AttackParam = "isAttacking";
-    private const string SwordState = "Sword";
-    private bool isSwing = false;
-    private int swings = 0;
+    private readonly int hashAttacking = Animator.StringToHash("attacking");
 
 	void Awake()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponentInParent<Animator>();
         if(playerRB)
         {
             Debug.Log("Player RB not assigned");
         }
-        //sword = GetComponentInChildren<BoxCollider>();
     }
-
-    /*
+    
     public void OnSwing()
     {
-        //if not already swinging
-        if(!anim.GetCurrentAnimatorStateInfo(0).IsName(SwordState))
-        {
-            anim.SetBool(AttackParam, true);
-            isSwing = true;
-        }
-        //is midswing, check for second attack here
-        else
-        {
-            Debug.Log("Second hit combo!");
-        }
-    }
-    */
-
-    public void OnSwing()
-    {
-        //this is called whenever player presses the attack button
-        //should start the coroutine if not already on it
-        //else, do nothing
-        //if not already swinging
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName(SwordState) && !isSwing)
-        {
-            StartCoroutine(SwordSwing());
-            isSwing = true;
-        }
-        //are in the middle of swing, want to increase this
-        else
-            ++swings;
-    }
-
-    public IEnumerator SwordSwing()
-    {
-        swings = 1;
-        yield return new WaitForSeconds(strikeTime);
-        //At this point, handle animation states according to value of swings
-        //@TODO: may want to use a swings variable in the animator
-        // to handle what anim to go to
-        Debug.Log("Swung " + swings + " times");
-        isSwing = false;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        //hit an enemy/sth - reset anim
-        if(other.tag == "Enemy" && isSwing)
-        {
-            Debug.Log("Hit enemy!");
-            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-            EnemyMovement movement = other.GetComponent<EnemyMovement>();
-            //Sneak attack will instantly kill enemies
-            float damage = (movement.IsPlayerBehind()) ? 9999f : strikeDamage;
-            enemy.Damage(damage);
-        }
-        if(other.tag == "Tree" && isSwing)
-        {
-            Debug.Log("Hit tree & toggled it's fire!");
-            Tree tree = other.GetComponent<Tree>();
-            tree.ToggleFire();
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        isSwing = false;
+        animator.SetBool(hashAttacking, true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -104,10 +35,46 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    private void Update()
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnSwing: " + anim.GetBool(AttackParam));
+        if (other.tag == "Enemy" && !isSwinging())
+        {
+            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
 
+            Vector3 hitLocation = new Vector3(other.transform.position.x, other.transform.position.y + enemy.labelHeight, other.transform.position.z);
 
+            OnTargetHit(enemy, hitLocation);
+            Debug.DrawLine(hitLocation, enemy.transform.forward);
+
+        }
+        else if (other.tag == "Tree" && !isSwinging())
+        {
+            Debug.Log("Hit tree & toggled it's fire!");
+            Tree tree = other.GetComponent<Tree>();
+            tree.ToggleFire();
+        }
+    }
+
+    void OnTargetHit(EnemyHealth target, Vector3 location)
+    {
+        Debug.Log("Hit " + target + " with sword!");
+        target.Damage(strikeDamage);
+        target.hitContainer.active = true;
+        target.hitContainer.transform.position = location;
+        target.hitMesh.text = "+ " + strikeDamage;
+        StartCoroutine(HideHitMessage(target));
+    }
+
+    private IEnumerator HideHitMessage(EnemyHealth target)
+    {
+        yield return new WaitForSeconds(1.5f);
+        if (target)
+            target.hitContainer.active = false;
+    }
+
+    bool isSwinging()
+    {
+        //is swinging if on attacking state on the attack layer (id 1)
+        return !animator.GetCurrentAnimatorStateInfo(1).IsName("Attacking");
     }
 }

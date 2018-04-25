@@ -3,8 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    
+
+    [SerializeField] private Animator animator;
+    [SerializeField] private float dirtMultiplier;
+    [SerializeField] private float snowMultiplier;
+
+    private float baseSpeed;
+    private readonly int hashSpeed = Animator.StringToHash("speed");
+
+    private void Awake()
+    {
+        baseSpeed = animator.GetFloat(hashSpeed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //handle entering in snow/dirt area triggers
+        if (other.tag == "Snow_Ground")
+        {
+            //player will be slower on snow
+            animator.SetFloat(hashSpeed, animator.GetFloat(hashSpeed) - (animator.GetFloat(hashSpeed) * snowMultiplier)); 
+        }
+        else if (other.tag == "Dirt_Ground")
+        {
+            //player will be faster on dirt
+            animator.SetFloat(hashSpeed, animator.GetFloat(hashSpeed) + (animator.GetFloat(hashSpeed) * dirtMultiplier));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // as soon as area is left, reset speed to normal speed
+        if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
+        {
+            Debug.Log("Called!");
+            animator.SetFloat(hashSpeed, baseSpeed);
+        }
+    }
+
+    /*
     private Rigidbody rb;
+
 
     [SerializeField] private float jumpForce = 400f;
     [SerializeField] private bool isJoystick;
@@ -119,4 +158,6 @@ public class PlayerMovement : MonoBehaviour {
         if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
             speed = moveSpeed;
     }
+
+    */
 }

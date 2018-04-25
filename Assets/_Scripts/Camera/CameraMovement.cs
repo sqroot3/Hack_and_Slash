@@ -14,8 +14,8 @@ public class CameraMovement : MonoBehaviour {
     [SerializeField] private float horizontalDistance = 2.68f;
     [SerializeField] private float lookdownAngle = 17.14f;
 
-    private string horizontalAxis = "MouseHorizontal";
-    private string verticalAxis = "MouseVertical";
+    private string horizontalAxis = "Mouse X";
+    private string verticalAxis = "Mouse Y";
     private Rigidbody rb;
 
 
@@ -41,6 +41,6 @@ public class CameraMovement : MonoBehaviour {
     public void Rotate(float angle)
     {
         //Orbit around player by "angle" amount
-        player.Rotate(new Vector3(0f, angle,0f));
+        player.Rotate(new Vector3(0f, angle, 0f));
     }
 }

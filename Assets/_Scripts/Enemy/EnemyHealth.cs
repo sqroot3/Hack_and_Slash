@@ -6,6 +6,10 @@ public class EnemyHealth : MonoBehaviour {
 
     [SerializeField] private float startingHealth = 100f;
 
+    public float labelHeight;
+    public GameObject hitContainer;
+    [HideInInspector] public TextMesh hitMesh;
+
     private float currentHealth;
     private Color deadColor = Color.black;
     private Color aliveColor = Color.white;
@@ -17,6 +21,8 @@ public class EnemyHealth : MonoBehaviour {
         currentHealth = startingHealth;
         material = GetComponent<MeshRenderer>().material;
         rb = GetComponent<Rigidbody>();
+        hitMesh = hitContainer.GetComponent<TextMesh>();
+        hitMesh.color = Color.yellow;
     }
 
     public void Damage(float amount)
