@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private float baseSpeed;
     private readonly int hashSpeed = Animator.StringToHash("speed");
+    private readonly int hashSprint = Animator.StringToHash("sprinting");
+
+    private string sprintAxis = "Sprint";
 
     private void Awake()
     {
@@ -38,6 +41,18 @@ public class PlayerMovement : MonoBehaviour {
         {
             Debug.Log("Called!");
             animator.SetFloat(hashSpeed, baseSpeed);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetButton(sprintAxis))
+        {
+            animator.SetBool(hashSprint, true);
+        }
+        else
+        {
+            animator.SetBool(hashSprint, false);
         }
     }
 
