@@ -331,6 +331,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 54068726917857058, guid: ea1dfa3a4affb4d87b5eca0b2fe1c07b,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea1dfa3a4affb4d87b5eca0b2fe1c07b, type: 2}
   m_IsPrefabParent: 0
@@ -885,11 +890,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114534355322982220, guid: 2bc16d86b2f45744591d507f17c7625b,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1360130568}
     - target: {fileID: 114181701320090878, guid: 2bc16d86b2f45744591d507f17c7625b,
         type: 2}
       propertyPath: player
@@ -905,6 +905,11 @@ Prefab:
       propertyPath: stations.Array.data[1]
       value: 
       objectReference: {fileID: 745008759}
+    - target: {fileID: 114534355322982220, guid: 2bc16d86b2f45744591d507f17c7625b,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1360130568}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bc16d86b2f45744591d507f17c7625b, type: 2}
   m_IsPrefabParent: 0
