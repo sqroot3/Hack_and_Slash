@@ -2889,6 +2889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strikeDamage: 20
+  ignoreTime: 0.5
 --- !u!114 &114986869171202426
 MonoBehaviour:
   m_ObjectHideFlags: 1

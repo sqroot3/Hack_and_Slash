@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff74e59ba3acd844abe62466e83e2d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
   labelHeight: 1.3
   hitContainer: {fileID: 1788384648147066}
   hitMesh: {fileID: 0}
