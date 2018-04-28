@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
         // as soon as area is left, reset speed to normal speed
         if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
         {
-            Debug.Log("Called!");
+            //Debug.Log("Called!");
             animator.SetFloat(hashSpeed, baseSpeed);
         }
     }
