@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private float baseSpeed;
     private readonly int hashSpeed = Animator.StringToHash("speed");
-    private readonly int hashSprint = Animator.StringToHash("sprinting");
+    //private readonly int hashSprint = Animator.StringToHash("sprinting");
 
     private string sprintAxis = "Sprint";
 
@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
+        /*
         if(Input.GetButton(sprintAxis))
         {
             animator.SetBool(hashSprint, true);
@@ -54,6 +55,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             animator.SetBool(hashSprint, false);
         }
+        */
     }
 
     /*
