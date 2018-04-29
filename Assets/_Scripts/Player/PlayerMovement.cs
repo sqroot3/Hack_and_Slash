@@ -2,179 +2,236 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour {
 
-    [SerializeField] private Animator animator;
-    [SerializeField] private float dirtMultiplier;
-    [SerializeField] private float snowMultiplier;
+	/* Other */
+	public float defaultSpeed;
+	public float sprintBoost;	
+	public float jumpStrength;
+	public float leapVertical;
+	public float leapHorizontal;
+	public float deathY = -1f;
 
-    private float baseSpeed;
-    private readonly int hashSpeed = Animator.StringToHash("speed");
-    //private readonly int hashSprint = Animator.StringToHash("sprinting");
+	
+	private Rigidbody rigidbody;
+	private float moveVertical;
+	private float moveHorizontal;
 
-    private string sprintAxis = "Sprint";
+	private float horizontal;
+	private float vertical;
 
-    private void Awake()
-    {
-        baseSpeed = animator.GetFloat(hashSpeed);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //handle entering in snow/dirt area triggers
-        if (other.tag == "Snow_Ground")
-        {
-            //player will be slower on snow
-            animator.SetFloat(hashSpeed, animator.GetFloat(hashSpeed) - (animator.GetFloat(hashSpeed) * snowMultiplier)); 
-        }
-        else if (other.tag == "Dirt_Ground")
-        {
-            //player will be faster on dirt
-            animator.SetFloat(hashSpeed, animator.GetFloat(hashSpeed) + (animator.GetFloat(hashSpeed) * dirtMultiplier));
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // as soon as area is left, reset speed to normal speed
-        if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
-        {
-            //Debug.Log("Called!");
-            animator.SetFloat(hashSpeed, baseSpeed);
-        }
-    }
-
-    private void Update()
-    {
-        /*
-        if(Input.GetButton(sprintAxis))
-        {
-            animator.SetBool(hashSprint, true);
-        }
-        else
-        {
-            animator.SetBool(hashSprint, false);
-        }
-        */
-    }
-
-    /*
-    private Rigidbody rb;
+	public static int currentJump = -1;
 
 
-    [SerializeField] private float jumpForce = 400f;
-    [SerializeField] private bool isJoystick;
-    [SerializeField] private bool airControl; //can steer mid-air
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayers;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float dirtMultiplier;
-    [SerializeField] private float snowMultiplier;
-    [SerializeField] private GameObject cameraRig;
-    [SerializeField] private float deathY = 0.45f;
+	/* Ground check stuff */
+	public Transform groundCheck;
+	public LayerMask groundLayers;
 
-    private float speed;
+	private bool grounded;
+	public static bool checkGrounded;
+	private float groundedRadius = .2f;
 
-    private CameraMovement camera;
-    private const float GroundedRadius = .2f;
+	/* Animation Stuff */
+	private Animator animator;
+	private readonly int hashHorizontal = Animator.StringToHash("horizontal");
+	private readonly int hashVertical = Animator.StringToHash("vertical");
+	private readonly int hashIdle = Animator.StringToHash("idle");
+	private readonly int hashSprint = Animator.StringToHash("sprint");
+	private readonly int hashJump = Animator.StringToHash("jump");
+	private readonly int hashGrounded = Animator.StringToHash("grounded");
 
-    private string[] jumpAxis = { "Jump", "JumpJoy" };
-    private bool jump; //input from jump
-    private bool grounded;
 
-    private string[] moveAxis = { "ForwardBack", "Sides"};
-    private float[] movement = { 0f, 0f };
-    
+	void Start () {
+		animator = GetComponent<Animator>();
+		rigidbody = GetComponent<Rigidbody>();
+		checkGrounded = true;
+	}
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-
-        if (!groundCheck)
-            Debug.Log("Ground check transform not assigned!");
-
-        camera = cameraRig.GetComponent<CameraMovement>();
-        speed = moveSpeed;
-    }
-
-    private void FixedUpdate()
-    {
-        grounded = false;
-
-        if (groundCheck)
-        {
-            //Player is grounded if sphere overlap hits anything labelled "ground"
-            Collider[] colliders = Physics.OverlapSphere(groundCheck.position, GroundedRadius, groundLayers);
+	void FixedUpdate()
+	{
+		grounded = false;
+		if(groundCheck)
+		{
+			//Player is grounded if sphere overlap hits anything labelled "ground"
+            Collider[] colliders = Physics.OverlapSphere(groundCheck.position, groundedRadius, groundLayers);
             foreach(Collider c in colliders)
             {
                 if (c.gameObject != gameObject)
                     grounded = true;
             }
-        }
-    }
+		}
+	}
 
-    private void Update()
-    {
-        
-        if(transform.position.y <= deathY && !Manager.playerDied)
+	void Update () {
+
+		//Check if on death height
+		if(transform.position.y <= deathY /*&& !Manager.playerDied*/)
         {
+			/*
             PlayerHealth health = GetComponent<PlayerHealth>();
             health.OnDeath();
+			*/
             Debug.Log("Died from a fall");
         }
 
-        //get input from keyboard
-        if (!isJoystick)
-        {
-            movement[0] = Input.GetAxis(moveAxis[0]);
-            movement[1] = Input.GetAxis(moveAxis[1]);
-            jump = Input.GetButtonDown(jumpAxis[0]);
-        }
+		//Get input from player
+		horizontal = Input.GetAxis("Horizontal");
+		vertical = Input.GetAxis("Vertical");
+		bool isSprint = Input.GetButton("Sprint");
+		bool isIdle = !(Mathf.Abs(horizontal) > 0f || Mathf.Abs(vertical) > 0f);
+		bool isJump = Input.GetButtonDown("Jump");
 
-        Move(jump);
-        jump = false;
-    }
+		//Send to animator
+		animator.SetFloat(hashHorizontal, horizontal);
+		animator.SetFloat(hashVertical, vertical);
+		animator.SetBool(hashIdle, isIdle);
+		animator.SetBool(hashSprint, isSprint);
 
-    public void Move(bool jump)
-    {
-        //Debug.Log("Grounded: " + grounded + " Jump: " + jump);
+		//Animator should only know grounded before and after executing a jump clip - handled by Animation events
+		if(checkGrounded)
+			animator.SetBool(hashGrounded, grounded);
+		else
+			animator.SetBool(hashGrounded, false);
+		
 
-        //forward/backward & sideways movement
-        if(grounded || airControl)
-        {
-            //movement wrt camera's lookat
-            rb.velocity = transform.forward * movement[0] * speed + transform.right * movement[1] * speed;
-        }
-        
-        //vertical movement
-        if(grounded && jump)
-        {
-            rb.AddForce(new Vector3(0f, jumpForce)); 
-            grounded = false;
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //handle entering in snow/dirt area triggers
-        if (other.tag == "Snow_Ground")
-        {
-            //player will be slower on snow
-            speed -= speed * snowMultiplier;
-        }
-        else if (other.tag == "Dirt_Ground")
-        {
-            //player will be faster on dirt
-            speed += speed * dirtMultiplier;
-        }
-    }
+		if(isJump && grounded && currentJump == -1) {
+			animator.SetTrigger(hashJump);
+		}
+			
 
-    private void OnTriggerExit(Collider other)
-    {
-        // as soon as area is left, reset speed to normal speed
-        if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
-            speed = moveSpeed;
-    }
+		//Update movement based on animation (needs to take into account camera's lookat)
+		
+		if(isSprint) {
+			moveHorizontal = horizontal * (defaultSpeed + sprintBoost) * Time.deltaTime;
+			moveVertical = vertical * (defaultSpeed + sprintBoost) * Time.deltaTime;
+		}
+		else {
+			moveHorizontal = horizontal * defaultSpeed * Time.deltaTime;
+			moveVertical = vertical * defaultSpeed * Time.deltaTime;
+		}		
 
-    */
+		if(currentJump == 2 && !grounded) {
+			//fix: not necessarily going "forward" all the time
+			//rigidbody.velocity = new Vector3(localRight * moveHorizontal, rigidbody.velocity.y, localForward * leapHorizontal);
+			//rigidbody.velocity = localForward * leapHorizontal + localRight * moveHorizontal + transform.up * rigidbody.velocity.y;
+			/*
+			if(horizontal > 0)
+			{
+				rigidbody.velocity = this.transform.right * leapHorizontal + this.transform.forward * moveHorizontal + transform.up * rigidbody.velocity.y;
+			}
+			else if(horizontal < 0)
+			{
+				rigidbody.velocity = -this.transform.right * leapHorizontal + this.transform.forward * moveHorizontal + transform.up * rigidbody.velocity.y;	
+			}
+			else {
+				rigidbody.velocity = this.transform.forward * leapHorizontal + this.transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
+			}
+			*/
+			EvaluateJump(false);
+		}
+		else {
+			rigidbody.velocity = transform.forward * moveVertical + transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
+		}
+			
+	}
+
+	void FastJump(float horizontal, float vertical)
+	{
+		
+	}
+
+	public void OnJumpClimax(int type)
+	{
+		//0 - standing jump
+		//1 - walking jump
+		//2 - running jump
+		switch(type)
+		{
+			case 0:
+				Debug.Log("Standing jump is at jumping point!");
+				rigidbody.velocity = transform.forward * moveVertical + transform.right * moveHorizontal + transform.up * jumpStrength;
+				break;
+			case 1:
+				Debug.Log("Walking jump is at jumping point!");
+				rigidbody.velocity = transform.forward * moveVertical + transform.right * moveHorizontal + transform.up * jumpStrength;
+				break;
+			case 2:
+				Debug.Log("Running jump is at jumping point!");
+				//fix - not necessarily going "forward" all the time
+				EvaluateJump(true);
+				Debug.DrawRay(transform.position, rigidbody.velocity, Color.black, 5f);
+				Debug.DrawRay(transform.position, this.transform.right, Color.blue, 5f);
+				Debug.DrawRay(transform.position, this.transform.up, Color.red, 5f);
+				Debug.DrawRay(transform.position, this.transform.up + this.transform.right, Color.green, 5f);
+				break;
+		}
+	}
+	
+	//Both of the below are also called on a state machine - this is to cover scenarios where the specific events may not be triggered
+	public void OnJumpStart(int type)
+	{
+		Debug.Log("Called OnJumpStart()!");
+		currentJump = type;
+		checkGrounded = false;
+	}
+
+	public void OnJumpEnd()
+	{
+		Debug.Log("Called OnJumpEnd()!");
+		checkGrounded = true;
+		currentJump = -1;
+	}
+
+	void EvaluateJump(bool initial)
+	{
+		if(initial)
+		{
+			if(horizontal > 0)
+				{
+					//going right
+					Debug.Log("going right");
+					rigidbody.velocity = this.transform.right + this.transform.up;
+					rigidbody.velocity *= leapHorizontal;
+				}
+				else if(horizontal < 0)
+				{
+					Debug.Log("going left");
+					rigidbody.velocity = -this.transform.right + this.transform.up;
+					rigidbody.velocity *= leapHorizontal;
+				}
+				else {
+					Debug.Log("straight up");
+					if(vertical > 0)
+						rigidbody.velocity = this.transform.forward * leapHorizontal  + Vector3.up * leapVertical;
+					else if(vertical < 0)
+						rigidbody.velocity = -this.transform.forward * leapHorizontal  + Vector3.up * leapVertical;	
+				}
+		}
+		else 
+		{
+			if(horizontal > 0)
+				{
+					//going right
+					Debug.Log("going right");
+					rigidbody.velocity = this.transform.right;
+					rigidbody.velocity *= leapHorizontal;
+				}
+				else if(horizontal < 0)
+				{
+					Debug.Log("going left");
+					rigidbody.velocity = -this.transform.right;
+					rigidbody.velocity *= leapHorizontal;
+				}
+				else {
+					Debug.Log("straight up");
+					if(vertical > 0)
+						rigidbody.velocity = this.transform.forward * leapHorizontal + this.transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
+					else if(vertical < 0)
+						rigidbody.velocity = -this.transform.forward * leapHorizontal + this.transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
+				}
+		}
+	}
+
 }

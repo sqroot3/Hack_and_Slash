@@ -23,8 +23,8 @@ public class Manager : MonoBehaviour {
 
         //lock mouse into place, make it invisible
         //Note: should keep track of this on menu/settings etc
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.visible = false;
         playerDied = false;
         InitializeTrees();
         aliveEnemies = getNumberOfEnemies();

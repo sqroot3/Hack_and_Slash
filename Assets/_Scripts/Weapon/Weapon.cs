@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float strikeDamage;
     private Animator animator;
     private Rigidbody playerRB;
-    private readonly int hashAttacking = Animator.StringToHash("attacking");
+    private readonly int hashSwing = Animator.StringToHash("swing");
     [SerializeField] private float ignoreTime = 5f;
     private float currentTime;
 
@@ -26,8 +26,8 @@ public class Weapon : MonoBehaviour
     public void OnSwing()
     {
         //only attack if not already attacking
-        if(!animator.GetBool(hashAttacking))
-            animator.SetBool(hashAttacking, true);
+        if(!animator.GetBool(hashSwing))
+            animator.SetBool(hashSwing, true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,7 +88,7 @@ public class Weapon : MonoBehaviour
     bool isSwinging()
     {
         //is swinging if on attacking state on the attack layer (id 1)
-        return animator.GetCurrentAnimatorStateInfo(1).IsName("Attacking");
+        return animator.GetCurrentAnimatorStateInfo(1).IsName("Sword_Slash");
     }
 
     private void FixedUpdate()
