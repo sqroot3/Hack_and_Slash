@@ -300,6 +300,7 @@
     <Compile Include="Assets\_Scripts\UI\Speaker.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Spell.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
+    <Compile Include="Assets\WeaponStateMachine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
