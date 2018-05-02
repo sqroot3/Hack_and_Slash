@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7e70c3b02a1374fad8fd8696ce9a2079
+guid: 55dafda4507beff4daa319c3caaaab9e
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -199,7 +199,6 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5

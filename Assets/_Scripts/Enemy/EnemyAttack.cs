@@ -37,6 +37,8 @@ public class EnemyAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        /*
         switch (state)
         {
             case 0:
@@ -58,6 +60,7 @@ public class EnemyAttack : MonoBehaviour {
                 renderer.material.color = Color.white;
                 break;
         }
+        */
     }
 
     public void OnAttack()
