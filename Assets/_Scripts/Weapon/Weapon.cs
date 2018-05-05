@@ -57,8 +57,6 @@ public class Weapon : MonoBehaviour
                 {
                     enemy = other.GetComponent<EnemyHealth>();
                 }
-               
-                
 
                 Vector3 hitLocation = new Vector3(other.transform.position.x, other.transform.position.y + enemy.labelHeight, other.transform.position.z);
 
@@ -82,12 +80,14 @@ public class Weapon : MonoBehaviour
     void OnTargetHit(EnemyHealth target, Vector3 location)
     {
         Debug.Log("Hit " + target + " with sword!");
-        target.Damage(strikeDamage);
+        EnemyMovement movement = target.GetComponent<EnemyMovement>();
+        float damage = (movement.IsPlayerBehind()) ? 999f: strikeDamage;
+        target.Damage(damage);
         target.hitContainer.active = true;
         target.hitContainer.transform.position = location;
         //calculate correct rotation so that the player can see the label right
 
-        target.hitMesh.text = "+ " + strikeDamage;
+        target.hitMesh.text = "+ " + damage;
         StartCoroutine(HideHitMessage(target));
     }
 

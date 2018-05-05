@@ -79,6 +79,7 @@ public class EnemyMovement : MonoBehaviour {
         //BOTH IF: enemy is facing player && the player is in "detection range"
         if (!IsPlayerBehind() && IsPlayerInRange())
         {
+            agent.angularSpeed = 120;
             //player is now detected, AI should now get closer to him
             attack.State = 1;
             agent.SetDestination(player.transform.position);
@@ -92,6 +93,7 @@ public class EnemyMovement : MonoBehaviour {
         //IF no player in sight to go and there's at least one tree burning
         else if (Manager.numOfBurningTrees > 0)
         {
+            agent.angularSpeed = 120;
             //go to closest burning tree
             Tree t = getClosestBurningTree();
             agent.SetDestination(t.transform.position);
@@ -113,6 +115,7 @@ public class EnemyMovement : MonoBehaviour {
             {
                 //if static, stay in place
                 agent.SetDestination(transform.position);
+                agent.angularSpeed = 0;
                 attack.State = 0;
             }
         }
@@ -143,6 +146,7 @@ public class EnemyMovement : MonoBehaviour {
         animator.SetFloat(hashVertical, velocity.y);
         animator.SetBool(hashIdle, isIdle);
         animator.SetBool(hashSprint, isSprint);
+
 
         //
         //Debug.Log(velocity + " - " + velocity.magnitude);
@@ -235,8 +239,6 @@ public class EnemyMovement : MonoBehaviour {
         if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
             agent.speed = defaultSpeed;
     }
-
-
 
 
     /*
