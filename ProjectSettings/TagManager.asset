@@ -10,6 +10,7 @@ TagManager:
   - Book
   - Snow_Ground
   - Dirt_Ground
+  - Enemy_Weapon
   layers:
   - Default
   - TransparentFX

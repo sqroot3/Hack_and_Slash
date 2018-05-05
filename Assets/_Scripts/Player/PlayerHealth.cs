@@ -29,4 +29,17 @@ public class PlayerHealth : MonoBehaviour {
     {
         currentHealth += amount;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy_Weapon")
+        {
+            EnemyAttack enemy = other.GetComponentInParent<EnemyAttack>();
+            if(enemy.isSwinging() && enemy.damaging)
+            {
+                Debug.Log("Enemy has damaged the player with melee damage");
+                Damage(enemy.meleeTouchDamage);
+            }
+        }
+    }
 }

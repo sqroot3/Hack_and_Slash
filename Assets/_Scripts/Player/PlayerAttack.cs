@@ -67,4 +67,19 @@ public class PlayerAttack : MonoBehaviour {
         }
 
     }
+
+    void OnSlashBegin()
+    {
+        sword.damaging = false;
+    }
+
+    void OnSlashBeginDamage()
+    {
+        sword.damaging = true;
+    }
+
+    void OnSlashEndDamage()
+    {
+        sword.damaging = false;
+    }
 }

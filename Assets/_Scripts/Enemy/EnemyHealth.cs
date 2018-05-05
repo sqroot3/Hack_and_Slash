@@ -10,16 +10,12 @@ public class EnemyHealth : MonoBehaviour {
     public GameObject hitContainer;
     [HideInInspector] public TextMesh hitMesh;
 
-    private float currentHealth;
-    private Color deadColor = Color.black;
-    private Color aliveColor = Color.white;
-    private Material material;
+    public float currentHealth;
     private Rigidbody rb;
 
     private void Awake()
     {
         currentHealth = startingHealth;
-        material = GetComponent<MeshRenderer>().material;
         rb = GetComponent<Rigidbody>();
         hitMesh = hitContainer.GetComponent<TextMesh>();
         hitMesh.color = Color.yellow;
@@ -28,16 +24,17 @@ public class EnemyHealth : MonoBehaviour {
     public void Damage(float amount)
     {
         currentHealth -= amount;
-
-        //Lerp its material color to show that it's been hit
-        material.color = Color.Lerp(deadColor, aliveColor, currentHealth / startingHealth);
+        
+        //apply damage anim to enemy here
         
         if (currentHealth <= 0)
             OnDeath();
     }
-    //hi
+    
     public void OnDeath()
     {
+        //apply death anim to enemy here
+
         Destroy(gameObject);
         Manager.aliveEnemies--;
     }
@@ -45,10 +42,5 @@ public class EnemyHealth : MonoBehaviour {
     public void Heal(float amount)
     {
         currentHealth += amount;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-       //Debug.Log(collision.collider.tag);
     }
 }

@@ -36,10 +36,15 @@ public class PlayerMovement : MonoBehaviour {
 	private Animator animator;
 	private readonly int hashHorizontal = Animator.StringToHash("horizontal");
 	private readonly int hashVertical = Animator.StringToHash("vertical");
-	private readonly int hashIdle = Animator.StringToHash("idle");
+    private readonly int hashHorizontalJump = Animator.StringToHash("jumpHorizontal");
+    private readonly int hashVerticalJump = Animator.StringToHash("jumpVertical");
+    private readonly int hashIdle = Animator.StringToHash("idle");
 	private readonly int hashSprint = Animator.StringToHash("sprint");
 	private readonly int hashJump = Animator.StringToHash("jump");
 	private readonly int hashGrounded = Animator.StringToHash("grounded");
+
+    private float jumpHorizontal = 0f;
+    private float jumpVertical = 0f;
 
 
 	void Start () {
@@ -85,7 +90,9 @@ public class PlayerMovement : MonoBehaviour {
 		//Send to animator
 		animator.SetFloat(hashHorizontal, horizontal);
 		animator.SetFloat(hashVertical, vertical);
-		animator.SetBool(hashIdle, isIdle);
+        animator.SetFloat(hashHorizontalJump, jumpHorizontal);
+        animator.SetFloat(hashVerticalJump, jumpVertical);
+        animator.SetBool(hashIdle, isIdle);
 		animator.SetBool(hashSprint, isSprint);
 
 		//Animator should only know grounded before and after executing a jump clip - handled by Animation events
@@ -129,7 +136,7 @@ public class PlayerMovement : MonoBehaviour {
 				rigidbody.velocity = this.transform.forward * leapHorizontal + this.transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
 			}
 			*/
-			EvaluateJump(false);
+			EvaluateJump();
 		}
 		else {
 			rigidbody.velocity = transform.forward * moveVertical + transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
@@ -137,10 +144,12 @@ public class PlayerMovement : MonoBehaviour {
 			
 	}
 
-	void FastJump(float horizontal, float vertical)
-	{
-		
-	}
+    void LockJump()
+    {
+        //lock in movement as jump is pressed - commit to jump
+        jumpHorizontal = horizontal;
+        jumpVertical = vertical;
+    }
 
 	public void OnJumpClimax(int type)
 	{
@@ -160,7 +169,7 @@ public class PlayerMovement : MonoBehaviour {
 			case 2:
 				Debug.Log("Running jump is at jumping point!");
 				//fix - not necessarily going "forward" all the time
-				EvaluateJump(true);
+				EvaluateInitialJump();
 				Debug.DrawRay(transform.position, rigidbody.velocity, Color.black, 5f);
 				Debug.DrawRay(transform.position, this.transform.right, Color.blue, 5f);
 				Debug.DrawRay(transform.position, this.transform.up, Color.red, 5f);
@@ -175,63 +184,66 @@ public class PlayerMovement : MonoBehaviour {
 		Debug.Log("Called OnJumpStart()!");
 		currentJump = type;
 		checkGrounded = false;
-	}
+        LockJump();
+    }
 
 	public void OnJumpEnd()
 	{
 		Debug.Log("Called OnJumpEnd()!");
 		checkGrounded = true;
 		currentJump = -1;
+        jumpHorizontal = 0;
+        jumpVertical = 0;
 	}
 
-	void EvaluateJump(bool initial)
-	{
-		if(initial)
-		{
-			if(horizontal > 0)
-				{
-					//going right
-					Debug.Log("going right");
-					rigidbody.velocity = this.transform.right + this.transform.up;
-					rigidbody.velocity *= leapHorizontal;
-				}
-				else if(horizontal < 0)
-				{
-					Debug.Log("going left");
-					rigidbody.velocity = -this.transform.right + this.transform.up;
-					rigidbody.velocity *= leapHorizontal;
-				}
-				else {
-					Debug.Log("straight up");
-					if(vertical > 0)
-						rigidbody.velocity = this.transform.forward * leapHorizontal  + Vector3.up * leapVertical;
-					else if(vertical < 0)
-						rigidbody.velocity = -this.transform.forward * leapHorizontal  + Vector3.up * leapVertical;	
-				}
-		}
-		else 
-		{
-			if(horizontal > 0)
-				{
-					//going right
-					Debug.Log("going right");
-					rigidbody.velocity = this.transform.right;
-					rigidbody.velocity *= leapHorizontal;
-				}
-				else if(horizontal < 0)
-				{
-					Debug.Log("going left");
-					rigidbody.velocity = -this.transform.right;
-					rigidbody.velocity *= leapHorizontal;
-				}
-				else {
-					Debug.Log("straight up");
-					if(vertical > 0)
-						rigidbody.velocity = this.transform.forward * leapHorizontal + this.transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
-					else if(vertical < 0)
-						rigidbody.velocity = -this.transform.forward * leapHorizontal + this.transform.right * moveHorizontal + transform.up * rigidbody.velocity.y;
-				}
-		}
-	}
+    void EvaluateJump()
+    {
+        if (jumpHorizontal > 0)
+        {
+            //going right
+            Debug.Log("going right");
+            rigidbody.velocity = this.transform.right;
+            rigidbody.velocity *= leapHorizontal;
+        }
+        else if (jumpHorizontal < 0)
+        {
+            Debug.Log("going left");
+            rigidbody.velocity = -this.transform.right;
+            rigidbody.velocity *= leapHorizontal;
+        }
+        else
+        {
+            Debug.Log("straight up");
+            if (jumpVertical > 0)
+                rigidbody.velocity = this.transform.forward * leapHorizontal + this.transform.right + transform.up * rigidbody.velocity.y;
+            else if (jumpVertical < 0)
+                rigidbody.velocity = -this.transform.forward * leapHorizontal + this.transform.right + transform.up * rigidbody.velocity.y;
+        }
+    }
+
+	void EvaluateInitialJump()
+    {
+        if (jumpHorizontal > 0)
+        {
+            //going right
+            Debug.Log("going right");
+            rigidbody.velocity = this.transform.right + this.transform.up;
+            rigidbody.velocity *= leapHorizontal;
+        }
+        else if (jumpHorizontal < 0)
+        {
+            Debug.Log("going left");
+            rigidbody.velocity = -this.transform.right + this.transform.up;
+            rigidbody.velocity *= leapHorizontal;
+        }
+        else
+        {
+            Debug.Log("straight up");
+            if (jumpVertical > 0)
+                rigidbody.velocity = this.transform.forward * leapHorizontal + Vector3.up * leapVertical;
+            else if (jumpVertical < 0)
+                rigidbody.velocity = -this.transform.forward * leapHorizontal + Vector3.up * leapVertical;
+        }
+    }
 
 }

@@ -245,7 +245,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.94921
+      - time: 0.55904603
         functionName: OnJumpEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

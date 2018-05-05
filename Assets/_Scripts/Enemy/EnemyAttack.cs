@@ -6,9 +6,11 @@ public class EnemyAttack : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private float detectRadius = 2.0f;
     [SerializeField] private float attackRadius = 1.0f;
+    public float meleeTouchDamage = 1f;
     private PlayerMovement playerMovement;
-    private MeshRenderer renderer;
+    private Animator animator;
     private int state = 0;
+    [HideInInspector] public bool damaging = false;
 
     public int State
     {
@@ -32,7 +34,7 @@ public class EnemyAttack : MonoBehaviour {
     // Use this for initialization
     void Start () {
         playerMovement = player.GetComponent<PlayerMovement>();
-        renderer = GetComponent<MeshRenderer>();
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -68,6 +70,10 @@ public class EnemyAttack : MonoBehaviour {
         if(IsInAttackRadius())
         {
             Debug.Log("attacked!");
+            if(!isSwinging())
+            {
+                animator.SetTrigger("swing");
+            }
             //set its color to an "attacking" state - just for demo purposes
             State = 2;
         }
@@ -84,5 +90,26 @@ public class EnemyAttack : MonoBehaviour {
         float distance = Vector3.Distance(transform.position, playerMovement.transform.position);
 
         return (distance <= attackRadius);
+    }
+
+    public bool isSwinging()
+    {
+        //is swinging if on attacking state on the attack layer (id 1)
+        return animator.GetCurrentAnimatorStateInfo(1).IsName("Sword_Slash");
+    }
+    
+    void OnSwingStart()
+    {
+        damaging = false;
+    }
+
+    void OnSwingBeginDamage()
+    {
+        damaging = true;
+    }
+
+    void OnSwingEndDamage()
+    {
+        damaging = false;
     }
 }

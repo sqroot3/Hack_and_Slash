@@ -6,12 +6,13 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 
-    [SerializeField] private float strikeDamage;
+    public float strikeDamage = 10f;
     private Animator animator;
     private Rigidbody playerRB;
     private readonly int hashSwing = Animator.StringToHash("swing");
     [SerializeField] private float ignoreTime = 5f;
     private float currentTime;
+    public bool damaging = false;
 
     void Awake()
     {
@@ -43,22 +44,32 @@ public class Weapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && isSwinging())
+        if ( (other.tag == "Enemy" || other.tag == "Enemy_Weapon" ) && isSwinging())
         {
-            if(currentTime < 0)
+            if (damaging && currentTime < 0)
             {
-                EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+                EnemyHealth enemy = null;
+                if (other.tag == "Enemy_Weapon")
+                {
+                    enemy = other.GetComponent<Enemy_Weapon>().health;
+                }
+                else
+                {
+                    enemy = other.GetComponent<EnemyHealth>();
+                }
+               
+                
 
                 Vector3 hitLocation = new Vector3(other.transform.position.x, other.transform.position.y + enemy.labelHeight, other.transform.position.z);
 
                 OnTargetHit(enemy, hitLocation);
-                Debug.DrawLine(hitLocation, enemy.transform.forward);
                 currentTime = ignoreTime;
+                Debug.DrawLine(hitLocation, enemy.transform.forward);
             }
         }
         else if (other.tag == "Tree" && isSwinging())
         {
-            if(currentTime < 0)
+            if(damaging && currentTime < 0)
             {
                 Debug.Log("Hit tree & toggled it's fire!");
                 Tree tree = other.GetComponent<Tree>();
@@ -74,6 +85,8 @@ public class Weapon : MonoBehaviour
         target.Damage(strikeDamage);
         target.hitContainer.active = true;
         target.hitContainer.transform.position = location;
+        //calculate correct rotation so that the player can see the label right
+
         target.hitMesh.text = "+ " + strikeDamage;
         StartCoroutine(HideHitMessage(target));
     }
@@ -91,9 +104,9 @@ public class Weapon : MonoBehaviour
         return animator.GetCurrentAnimatorStateInfo(1).IsName("Sword_Slash");
     }
 
+
     private void FixedUpdate()
     {
         currentTime -= Time.deltaTime;
     }
-
 }

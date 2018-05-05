@@ -44,6 +44,9 @@ public class EnemyMovement : MonoBehaviour {
     private readonly int hashIdle = Animator.StringToHash("idle");
     private readonly int hashSprint = Animator.StringToHash("sprint");
 
+    Vector2 smoothDeltaPosition = Vector2.zero;
+    Vector2 velocity = Vector2.zero;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -53,11 +56,12 @@ public class EnemyMovement : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
         agent.speed = defaultSpeed;
+        agent.updatePosition = false;
     }
 
     private void Update()
     {
-
+        /*
         //Check if on death height
         if (transform.position.y <= deathY && !Manager.playerDied)
         {
@@ -65,21 +69,12 @@ public class EnemyMovement : MonoBehaviour {
             health.OnDeath();
             Debug.Log("Died from a fall");
         }
+        */
 
-        //Get input from player
-        Vector3 normalizedVelocity = rigidbody.velocity.normalized;
-        horizontal = normalizedVelocity.x;
-        vertical = normalizedVelocity.z;
-        //make it sprint when player is detected
-        bool isSprint = Input.GetButton("Sprint");
-        bool isIdle = !(Mathf.Abs(horizontal) > 0f || Mathf.Abs(vertical) > 0f);
-
-        //Send to animator
-        animator.SetFloat(hashHorizontal, horizontal);
-        animator.SetFloat(hashVertical, vertical);
-        animator.SetBool(hashIdle, isIdle);
-        animator.SetBool(hashSprint, isSprint);
-
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log(agent.destination + " - " + velocity + " - " + velocity.magnitude + " - " + agent.remainingDistance);
+        }
 
         //BOTH IF: enemy is facing player && the player is in "detection range"
         if (!IsPlayerBehind() && IsPlayerInRange())
@@ -110,7 +105,7 @@ public class EnemyMovement : MonoBehaviour {
             {
                 Debug.Log(agent.destination);
                 //if kinematic, go to next station and set patrolling state
-                if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                if (!agent.pathPending && agent.remainingDistance < 1f)
                     GoToNextStation();
                 attack.State = 3;
             }
@@ -120,11 +115,47 @@ public class EnemyMovement : MonoBehaviour {
                 agent.SetDestination(transform.position);
                 attack.State = 0;
             }
-
-
         }
+
+        Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
+
+        // Map 'worldDeltaPosition' to local space
+        float dx = Vector3.Dot(transform.right, worldDeltaPosition);
+        float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+        Vector2 deltaPosition = new Vector2(dx, dy);
+
+        // Low-pass filter the deltaMove
+        float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
+        smoothDeltaPosition = Vector2.Lerp(smoothDeltaPosition, deltaPosition, smooth);
+
+        // Update velocity if time advances
+        if (Time.deltaTime > 1e-5f)
+            velocity = smoothDeltaPosition / Time.deltaTime;
+
+
+        //Send data to animation
+        bool isSprint = false;
+        //bool isSprint = (attack.State == 1);
+        bool isIdle = !(velocity.magnitude > 0.1f && agent.remainingDistance > agent.radius);
+
+        //Send to animator
+        animator.SetFloat(hashHorizontal, velocity.x);
+        animator.SetFloat(hashVertical, velocity.y);
+        animator.SetBool(hashIdle, isIdle);
+        animator.SetBool(hashSprint, isSprint);
+
+        //
+        //Debug.Log(velocity + " - " + velocity.magnitude);
+        Debug.DrawRay(transform.position, transform.right, Color.red);
+        Debug.DrawRay(transform.position, transform.up, Color.green);
+        Debug.DrawRay(transform.position, transform.forward, Color.blue);
     }
 
+    void OnAnimatorMove()
+    {
+        //Update position to agent position
+        transform.position = agent.nextPosition;
+    }
 
     void GoToNextStation()
     {
@@ -204,6 +235,9 @@ public class EnemyMovement : MonoBehaviour {
         if (other.tag == "Snow_Ground" || other.tag == "Dirt_Ground")
             agent.speed = defaultSpeed;
     }
+
+
+
 
     /*
     [SerializeField] private GameObject player;
