@@ -1,35 +1,81 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour {
-    
-    
+
+
+    /*
+     * Player "subclass" - needs to take care of player's attack/move/health 
+     * 
+     */
+    public class Player
+    {
+        public PlayerMovement movement;
+        public PlayerHealth health;
+        public PlayerAttack attack;
+        public CameraMovement camera;
+
+        public Weapon sword;
+        public Spell magic;
+    }
+
+
+    [SerializeField] private GameObject playerPrefab;
+    public Player player = new Player();
+
     [SerializeField] private float gameTimer;
+
+    /* GUI STUFF */
+    public static Slider hpSlider;
+    public Slider magicSlider;
+    public Text timerText;
+    public Text magicText;
+    public Text swordText;
 
 
     public static List<Tree> trees = new List<Tree>();
     public static int numOfBurningTrees = 0;
     public static int aliveEnemies = 0;
+    public static int magicKills = 0;
+    public static int swordKills = 0;
     public static bool playerDied = false;
     private bool won = false;
     [SerializeField] private float startWait = 0f;
     [SerializeField] private float endWait = 0f;
 
+    private void Awake()
+    {
+        hpSlider = GameObject.FindGameObjectWithTag("HP_Slider").GetComponent<Slider>();
+        
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         //lock mouse into place, make it invisible
         //Note: should keep track of this on menu/settings etc
         //Cursor.lockState = CursorLockMode.Confined;
         //Cursor.visible = false;
+        GetPlayerData();
         playerDied = false;
         InitializeTrees();
         aliveEnemies = getNumberOfEnemies();
         StartCoroutine(GameLoop());
+        magicSlider.value = Spell.charge;
 	}
+
+    void GetPlayerData()
+    {
+        player.movement = playerPrefab.GetComponent<PlayerMovement>();
+        player.attack = playerPrefab.GetComponent<PlayerAttack>();
+        player.health = playerPrefab.GetComponent<PlayerHealth>();
+        player.sword = playerPrefab.GetComponentInChildren<Weapon>();
+        player.magic = playerPrefab.GetComponent<Spell>();
+        player.camera = playerPrefab.GetComponentInChildren<CameraMovement>();
+    }
 
     void LoadLevel(string levelName)
     {
@@ -70,7 +116,13 @@ public class Manager : MonoBehaviour {
         while (aliveEnemies > 0 && !playerDied && gameTimer > 0f)
         {
             //@TODO: implement game timer with UI (possibly slider) & remove comment below
-            //gameTimer -= Time.deltaTime;
+            gameTimer -= Time.deltaTime;
+            Spell.charge += Time.deltaTime * 2.0f;
+            magicSlider.value = Spell.charge;
+            magicText.text = string.Format("{0, 2}", magicKills);
+            swordText.text = string.Format("{0, 2}", swordKills);
+
+            timerText.text = TranslateTime(gameTimer);
             Debug.Log("Time Left: " + gameTimer);
             yield return null;
         }
@@ -101,5 +153,17 @@ public class Manager : MonoBehaviour {
     int getNumberOfEnemies()
     {
         return GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
+
+    string TranslateTime(float seconds)
+    {
+        string result = "";
+        
+        int minutes = (int)seconds / 60;
+        int sec = (int)seconds % 60;
+
+        result = string.Format("{0,2}:{1,2}", minutes.ToString("D2"), sec.ToString("D2"));
+
+        return result;
     }
 }

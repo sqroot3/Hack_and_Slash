@@ -94,7 +94,7 @@ public class Particle : MonoBehaviour {
         EnemyMovement movement = target.GetComponent<EnemyMovement>();
         float damage = Spell.sDamage;
         movement.animator.SetBool("damaged", true);
-        target.Damage(damage);
+        target.Damage(damage, 1);
         target.hitContainer.active = true;
         target.hitContainer.transform.position = location;
         //calculate correct rotation so that the player can see the label right

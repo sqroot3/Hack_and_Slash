@@ -24,18 +24,29 @@ public class EnemyHealth : MonoBehaviour {
         animator.SetBool("alive", true);
     }
 
-    public void Damage(float amount)
+    //0 - sword, 1 - magic
+    public void Damage(float amount, int type)
     {
         currentHealth -= amount;
 
         Debug.Log("I was hit!" + currentHealth);
 
         if (currentHealth <= 0)
-            OnDeath();
+            OnDeath(type);
     }
     
-    public void OnDeath()
+    public void OnDeath(int type)
     {
+        switch(type)
+        {
+            case 0:
+                Manager.swordKills++;
+                break;
+            case 1:
+                Manager.magicKills++;
+                break;
+            default: break;
+        }
         //apply death anim to enemy here
         animator.SetBool("alive", false);
         animator.SetBool("damaged", true);

@@ -13,6 +13,8 @@ TagManager:
   - Enemy_Weapon
   - Wheel_Back
   - Projectile
+  - HP_Slider
+  - Magic_Slider
   layers:
   - Default
   - TransparentFX

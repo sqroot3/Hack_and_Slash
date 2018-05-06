@@ -86,7 +86,7 @@ public class Weapon : MonoBehaviour
         Debug.Log("Hit " + target + " with sword!");
         EnemyMovement movement = target.GetComponent<EnemyMovement>();
         float damage = (movement.IsPlayerBehind()) ? 999f: strikeDamage;
-        target.Damage(damage);
+        target.Damage(damage, 0);
         target.hitContainer.active = true;
         target.hitContainer.transform.position = location;
         //calculate correct rotation so that the player can see the label right

@@ -15,6 +15,8 @@ public class Spell : MonoBehaviour {
     [HideInInspector] public Tree currentAimTree = null;
     [HideInInspector] public Vector3 currentAimAt;
     public ParticleSpawner spawner;
+    public static float charge = 100f;
+    public float shotCost = 20f;
 
 	// Use this for initialization
 	void Start () {
@@ -22,16 +24,11 @@ public class Spell : MonoBehaviour {
         animator = GetComponent<Animator>();
         sDamage = damage;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void OnSpell()
     {
         //only attack if not already attacking
-        if (!animator.GetBool("swing"))
+        if (!animator.GetBool("swing") && charge > shotCost)
         {
             animator.SetBool("swing", true);
             animator.SetBool("isLongRange", true);
@@ -100,6 +97,7 @@ public class Spell : MonoBehaviour {
         Debug.Log("Aimed at: " + currentAimAt);
         spawner.SpawnParticleFromPool();
         damaging = true;
+        charge -= shotCost;
         /*
          * hits are managed by the particles themselves now
         if(currentAimEnemy)

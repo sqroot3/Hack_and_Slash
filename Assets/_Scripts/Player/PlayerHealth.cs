@@ -14,11 +14,18 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth = startingHealth;
         animator = GetComponent<Animator>();
         animator.SetBool("alive", true);
+        
+    }
+
+    private void Start()
+    {
+        Manager.hpSlider.value = startingHealth;
     }
 
     public void Damage(float amount)
     {
         currentHealth -= amount;
+        Manager.hpSlider.value = currentHealth;
         Debug.Log("Hit! CH: " + currentHealth);
         if (currentHealth <= 0)
             OnDeath();
@@ -34,6 +41,7 @@ public class PlayerHealth : MonoBehaviour {
     public void Heal(float amount)
     {
         currentHealth += amount;
+        Manager.hpSlider.value = currentHealth;
     }
 
     private void OnTriggerEnter(Collider other)
