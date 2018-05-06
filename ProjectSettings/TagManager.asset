@@ -11,6 +11,8 @@ TagManager:
   - Snow_Ground
   - Dirt_Ground
   - Enemy_Weapon
+  - Wheel_Back
+  - Projectile
   layers:
   - Default
   - TransparentFX

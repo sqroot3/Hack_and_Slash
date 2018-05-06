@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spell : MonoBehaviour {
-
-    [SerializeField] private float damage = 20f;
+    
+    public float damage = 20f;
+    public static float sDamage;
     [SerializeField] private float range = 10f;
+    public Transform throwOrigin;
+    private Animator animator;
     private Camera camera;
+    public static bool damaging = false;
+    [HideInInspector] public EnemyHealth currentAimEnemy = null;
+    [HideInInspector] public Tree currentAimTree = null;
+    [HideInInspector] public Vector3 currentAimAt;
+    public ParticleSpawner spawner;
 
 	// Use this for initialization
 	void Start () {
         camera = GetComponentInChildren<Camera>();
+        animator = GetComponent<Animator>();
+        sDamage = damage;
 	}
 	
 	// Update is called once per frame
@@ -20,24 +30,14 @@ public class Spell : MonoBehaviour {
 
     public void OnSpell()
     {
-        EnemyHealth enemy = null;
-        Tree tree = null;
-        GetAimingEntity(out enemy, out tree);
-        if(enemy)
+        //only attack if not already attacking
+        if (!animator.GetBool("swing"))
         {
-            enemy.Damage(damage);
-            //@TODO:particle related code: 
-            /*
-             *  fire around book 
-             *  fire around player
-             *  for only a small amount of time
-             */
-            Debug.Log("damaged an enemy with magic!");
-        }
-        else if(tree)
-        {
-            tree.ToggleFire();
-            Debug.Log("Toggled tree's fire!");
+            animator.SetBool("swing", true);
+            animator.SetBool("isLongRange", true);
+            currentAimEnemy = null;
+            currentAimTree = null;
+            GetAimingEntity(out currentAimEnemy, out currentAimTree);
         }
     }
 
@@ -52,10 +52,18 @@ public class Spell : MonoBehaviour {
         int tMask = 1 << 12;
 
         int layerMask = pMask | tMask;
+        int genLayerMask = 1 << 10;
+        genLayerMask = ~genLayerMask;
 
         Ray r = camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
+        RaycastHit hitInfo, generalHit;
         Physics.Raycast(r, out hitInfo, range, layerMask);
+        Physics.Raycast(r, out generalHit, Mathf.Infinity, genLayerMask);
+
+        //get point the mouse is looking at, store that as general lookat
+        if (hitInfo.collider)
+            currentAimAt = hitInfo.collider.transform.position;
+        
 
         _tree = null;
         _enemy = null;
@@ -78,5 +86,37 @@ public class Spell : MonoBehaviour {
                     break;
             }
         }
+    }
+
+
+    void OnMagicBegin()
+    {
+        damaging = false;
+    }
+
+    void OnMagicBeginHit()
+    {
+        Debug.Log("Aimed at: " + currentAimAt);
+        spawner.SpawnParticleFromPool();
+        damaging = true;
+        /*
+         * hits are managed by the particles themselves now
+        if(currentAimEnemy)
+        {
+            currentAimEnemy.Damage(damage);
+            Debug.Log("damaged an enemy with magic!");
+        }
+        else if(currentAimTree)
+        {
+            currentAimTree.ToggleFire();
+            Debug.Log("Toggled tree's fire!");
+        }
+        */
+    }
+
+    void OnMagicEndHit()
+    {
+        //if this is enabled, valid long range kills will not be counted
+        //damaging = false;
     }
 }

@@ -38,7 +38,7 @@ public class EnemyMovement : MonoBehaviour {
     private float vertical;
     private float horizontal;
 
-    private Animator animator;
+    public Animator animator;
     private readonly int hashHorizontal = Animator.StringToHash("horizontal");
     private readonly int hashVertical = Animator.StringToHash("vertical");
     private readonly int hashIdle = Animator.StringToHash("idle");

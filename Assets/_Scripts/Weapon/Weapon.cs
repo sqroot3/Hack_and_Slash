@@ -28,7 +28,11 @@ public class Weapon : MonoBehaviour
     {
         //only attack if not already attacking
         if(!animator.GetBool(hashSwing))
+        {
             animator.SetBool(hashSwing, true);
+            animator.SetBool("isLongRange", false);
+        }
+            
     }
 
     private void OnCollisionEnter(Collision collision)
