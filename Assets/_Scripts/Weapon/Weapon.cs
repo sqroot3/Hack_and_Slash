@@ -90,6 +90,9 @@ public class Weapon : MonoBehaviour
         target.hitContainer.active = true;
         target.hitContainer.transform.position = location;
         //calculate correct rotation so that the player can see the label right
+        float rotation = (movement.IsPlayerBehind()) ? 0f : 180f;
+        target.hitContainer.transform.localRotation = Quaternion.identity;
+        target.hitContainer.transform.Rotate(new Vector3(0f, rotation, 0f));
 
         target.hitMesh.text = "+ " + damage;
         StartCoroutine(HideHitMessage(target));

@@ -38,7 +38,7 @@ public class EnemyMovement : MonoBehaviour {
     private float vertical;
     private float horizontal;
 
-    public Animator animator;
+    [HideInInspector] public Animator animator;
     private readonly int hashHorizontal = Animator.StringToHash("horizontal");
     private readonly int hashVertical = Animator.StringToHash("vertical");
     private readonly int hashIdle = Animator.StringToHash("idle");
@@ -83,11 +83,8 @@ public class EnemyMovement : MonoBehaviour {
             //player is now detected, AI should now get closer to him
             attack.State = 1;
             agent.SetDestination(player.transform.position);
-            if (attack.IsInAttackRadius())
-            {
-                //attack only if in attack radius
-                attack.OnAttack();
-            }
+            //onAttack now evaluates type of attacked based on detection/attack state
+            attack.OnAttack();
 
         }
         //IF no player in sight to go and there's at least one tree burning

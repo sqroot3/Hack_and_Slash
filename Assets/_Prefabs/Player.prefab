@@ -2821,9 +2821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  range: 15
+  range: 50
   throwOrigin: {fileID: 4152303758945416}
-  damaging: 0
   currentAimEnemy: {fileID: 0}
   currentAimTree: {fileID: 0}
   currentAimAt: {x: 0, y: 0, z: 0}

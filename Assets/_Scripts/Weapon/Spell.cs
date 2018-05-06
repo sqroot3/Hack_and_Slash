@@ -60,10 +60,11 @@ public class Spell : MonoBehaviour {
         Physics.Raycast(r, out hitInfo, range, layerMask);
         Physics.Raycast(r, out generalHit, Mathf.Infinity, genLayerMask);
 
-        //get point the mouse is looking at, store that as general lookat
-        if (hitInfo.collider)
-            currentAimAt = hitInfo.collider.transform.position;
-        
+        Vector3 direction = generalHit.point - spawner.originTransform.position;
+        Debug.DrawRay(spawner.originTransform.position, direction, Color.blue, 3f);
+
+        //save actual aiming at point as current aiming at
+        currentAimAt = generalHit.point;
 
         _tree = null;
         _enemy = null;

@@ -32,7 +32,6 @@ public class Particle : MonoBehaviour {
     private void FixedUpdate()
     {
         ParticleMovement();
-        ParticleSpin();
     }
 
     private void ParticleMovement()
@@ -42,11 +41,7 @@ public class Particle : MonoBehaviour {
         particleDirection.Normalize();
         
         particleRB.velocity = particleDirection * speed;
-    }
-
-    private void ParticleSpin()
-    {
-        transform.Rotate(0, spinSpeed, 0, Space.Self);
+        Debug.DrawRay(transform.position, particleDirection, Color.black);
     }
 
     IEnumerator SelfDestruct()
@@ -88,6 +83,8 @@ public class Particle : MonoBehaviour {
         else if(other.tag == "Projectile")
         {
             ParticlePool.Instance.AddToPool(gameObject);
+            //reset animation bla bla
+            other.GetComponent<Throwable>().Finish();
         }
     }
 
@@ -101,6 +98,9 @@ public class Particle : MonoBehaviour {
         target.hitContainer.active = true;
         target.hitContainer.transform.position = location;
         //calculate correct rotation so that the player can see the label right
+        float rotation = (movement.IsPlayerBehind()) ? 0f : 180f;
+        target.hitContainer.transform.localRotation = Quaternion.identity;
+        target.hitContainer.transform.Rotate(new Vector3(0f, rotation, 0f));
 
         target.hitMesh.text = "+ " + damage;
         ParticleSpawner parent = GetComponentInParent<ParticleSpawner>();

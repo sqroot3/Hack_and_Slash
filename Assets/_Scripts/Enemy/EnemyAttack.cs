@@ -11,6 +11,9 @@ public class EnemyAttack : MonoBehaviour {
     private Animator animator;
     private int state = 0;
     [HideInInspector] public bool damaging = false;
+    public GameObject backWheel;
+    public GameObject armWheel;
+    public static bool charged = true;
 
     public int State
     {
@@ -39,7 +42,7 @@ public class EnemyAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        Debug.Log("Current state: " + state);
         /*
         switch (state)
         {
@@ -72,16 +75,31 @@ public class EnemyAttack : MonoBehaviour {
             Debug.Log("attacked!");
             if(!isSwinging())
             {
-                animator.SetTrigger("swing");
+                animator.SetBool("isLongRange", false);
+                animator.SetBool("swing", true);
             }
             //set its color to an "attacking" state - just for demo purposes
             State = 2;
+        }
+        else if(State == 1 && charged)
+        {
+            //long range attack if detected and if weapon is charged
+            animator.SetBool("isLongRange", true);
+            animator.SetBool("swing", true);
         }
         else
         {
             //if out of reach, set its color back to white - demo purposes
             State = 0;
         }
+    }
+
+    public bool IsInDetectRadius()
+    {
+        //Get the distance from enemy to player
+        float distance = Vector3.Distance(transform.position, playerMovement.transform.position);
+
+        return (distance <= detectRadius);
     }
 
     public bool IsInAttackRadius()
@@ -111,5 +129,39 @@ public class EnemyAttack : MonoBehaviour {
     void OnSwingEndDamage()
     {
         damaging = false;
+        animator.SetBool("swing", false);
+    }
+
+    void OnThrowBegin()
+    {
+        //hide back wheel, turn on arm wheel
+        backWheel.SetActive(false);
+        armWheel.SetActive(true);
+        charged = false;
+    }
+
+    void OnThrowLaunch()
+    {
+        //arm wheel goes flying at player :)
+        Throwable _projectile = armWheel.GetComponent<Throwable>();
+        _projectile.target = player.transform;
+        _projectile.BeginFlight();
+    }
+
+    void OnThrowEnd()
+    {
+        animator.SetBool("swing", false);
+    }
+
+    public void resetLongRange()
+    {
+        animator.SetBool("isLongRange", false);
+        animator.SetBool("swing", false);
+    }
+
+    public void resetWheelVisibility()
+    {
+        backWheel.SetActive(true);
+        armWheel.SetActive(false);
     }
 }

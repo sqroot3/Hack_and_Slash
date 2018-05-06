@@ -304,6 +304,7 @@
     <Compile Include="Assets\_Scripts\UI\ConversationPlayer.cs" />
     <Compile Include="Assets\_Scripts\UI\Speaker.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Spell.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\Throwable.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\WeaponStateMachine.cs" />
   </ItemGroup>

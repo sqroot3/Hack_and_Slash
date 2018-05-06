@@ -19,13 +19,14 @@ public class PlayerHealth : MonoBehaviour {
     public void Damage(float amount)
     {
         currentHealth -= amount;
-
+        Debug.Log("Hit! CH: " + currentHealth);
         if (currentHealth <= 0)
             OnDeath();
     }
 
     public void OnDeath()
     {
+        Debug.Log("You died!");
         animator.SetBool("alive", false);
 
     }
