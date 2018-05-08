@@ -14,8 +14,89 @@ MonoBehaviour:
   speak: {fileID: 11400000, guid: 60d68dc5b33ace34984923b5280dc2dd, type: 2}
   messages:
   - id: 0
-    message: What is this place...
-  - id: 1
-    message: I don't know
+    message: Oh!
   - id: 0
-    message: I want to leave!
+    message: "Wait, miss!\t"
+  - id: 1
+    message: Um... Who are you?
+  - id: 0
+    message: I am Reven, a humble flame spirit at your service.
+  - id: 1
+    message: At my service? No thanks.
+  - id: 0
+    message: O-oh.. My apologies.
+  - id: 0
+    message: Wait! Don't leave.
+  - id: 1
+    message: I have somewhere I should be going.
+  - id: 0
+    message: At least share your name first?
+  - id: 1
+    message: It's Lilim.
+  - id: 0
+    message: Oh!
+  - id: 1
+    message: What?
+  - id: 0
+    message: You're that girl! That.. That one! Yes!
+  - id: 1
+    message: Uh-huh? That girl?
+  - id: 0
+    message: "The famous thief! Oh, I\u2019ve been an admirer of your work \nfor years!
+      My favorite theft of yours-- yes, I have a favorite-- \nwas when you stole the
+      pants off of that Baron! \n"
+  - id: 0
+    message: "Right in the middle of a speech in the center of town! \nLord, that
+      had me laughing for weeks!"
+  - id: 1
+    message: Heh, you left out the best part.
+  - id: 0
+    message: "Aha, yes! The color of his face rivaled that of his red \nheart-patterned
+      briefs!\r"
+  - id: 1
+    message: "And it hasn\u2019t changed color since!\r"
+  - id: 0
+    message: "Yes yes! Oh, I can\u2019t wait for your next deed. If I were to take
+      \na guess, because you\u2019re here, you need something from \noutside of town?"
+  - id: 0
+    message: "Maybe some snowballs from outside to use for target \npractice on the
+      Baron?"
+  - id: 1
+    message: "Well, actually\u2026"
+  - id: 0
+    message: "Or\u2026 did something else happen?\r"
+  - id: 1
+    message: "I\u2019m taking a business trip to another town. A long, long trip.
+      \nMight not come back, ever."
+  - id: 0
+    message: "The guards finally caught you and gave you the boot?\r"
+  - id: 1
+    message: "T-that\u2019s not what I said!\r"
+  - id: 0
+    message: "Forgive me, I jumped to conclusions.\r"
+  - id: 1
+    message: "You\u2019re not forgiven. Now, excuse me--\r"
+  - id: 0
+    message: Wait!
+  - id: 1
+    message: What is it now?!
+  - id: 0
+    message: 'The ice spirits out there-- They''re a nasty bunch.
+
+      I don''t think you would last long.'
+  - id: 1
+    message: I'm sure I'll be fine.
+  - id: 0
+    message: Why not take some insurance? Take me?
+  - id: 1
+    message: I don't think I want the company of a rude little spirit.
+  - id: 0
+    message: But I'm a rude little fire spirit.
+  - id: 1
+    message: Hmm... Only if you agree to be  quiet the entire time.
+  - id: 0
+    message: 'Oh, yes! This will be great-- seeing your skills in action!
+
+      Why, I''m so excited---'
+  - id: 1
+    message: Ugh. Shut up, Reven.

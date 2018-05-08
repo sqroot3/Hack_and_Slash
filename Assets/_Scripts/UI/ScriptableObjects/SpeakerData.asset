@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakers:
   - id: 0
-    name: Lillim
-    avatar: {fileID: 21300000, guid: bce8af9c46490aa4e9fe1a14ef5ef095, type: 3}
-  - id: 1
     name: Reven
-    avatar: {fileID: 21300000, guid: e234c126e2ac9a74c99f1737c4717d41, type: 3}
+    avatar: {fileID: 21300000, guid: c17b467ece7f9784eaadfeae4266e597, type: 3}
+  - id: 1
+    name: Lilim
+    avatar: {fileID: 21300000, guid: f3957be913d2d394ab3bed9f79f2fec2, type: 3}
