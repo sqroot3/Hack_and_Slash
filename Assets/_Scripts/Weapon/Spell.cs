@@ -15,7 +15,8 @@ public class Spell : MonoBehaviour {
     [HideInInspector] public Tree currentAimTree = null;
     [HideInInspector] public Vector3 currentAimAt;
     public ParticleSpawner spawner;
-    public static float charge = 100f;
+    public static float charge;
+    public float startCharge = 100f;
     public float shotCost = 20f;
 
 	// Use this for initialization
@@ -23,6 +24,7 @@ public class Spell : MonoBehaviour {
         camera = GetComponentInChildren<Camera>();
         animator = GetComponent<Animator>();
         sDamage = damage;
+        charge = startCharge;
 	}
 
     public void OnSpell()

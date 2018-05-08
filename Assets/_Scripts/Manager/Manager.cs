@@ -80,6 +80,9 @@ public class Manager : MonoBehaviour {
     void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+        //reset appropriate values after reloading level
+        swordKills = 0;
+        magicKills = 0;
     }
 	
     private IEnumerator GameLoop()
