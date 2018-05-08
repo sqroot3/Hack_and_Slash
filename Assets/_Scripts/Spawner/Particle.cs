@@ -55,9 +55,10 @@ public class Particle : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //hit an enemy anywhere
-        if(other.tag == "Enemy" || other.tag == "Enemy_Weapon" || other.tag == "Wheel_Back")
+        if (other.tag == "Enemy" || other.tag == "Enemy_Weapon" || other.tag == "Wheel_Back")
         {
-            if(Spell.damaging)
+            Manager.sfx_Source.Stop();
+            if (Spell.damaging)
             {
                 EnemyHealth enemy = null;
                 if (other.tag == "Enemy_Weapon" || other.tag == "Wheel_Back")
@@ -73,7 +74,8 @@ public class Particle : MonoBehaviour {
         //hit a tree
         else if(other.tag == "Tree")
         {
-            if(Spell.damaging)
+            Manager.sfx_Source.Stop();
+            if (Spell.damaging)
             {
                 other.GetComponent<Tree>().ToggleFire();
             }
@@ -82,6 +84,7 @@ public class Particle : MonoBehaviour {
         //hit a projectile (as in an enemy's wheel)
         else if(other.tag == "Projectile")
         {
+            Manager.sfx_Source.Stop();
             ParticlePool.Instance.AddToPool(gameObject);
             //reset animation bla bla
             other.GetComponent<Throwable>().Finish();

@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour {
 
     [SerializeField] private Texture2D crosshair;
     [SerializeField] private GameObject book;
+    public AudioClip swordClip;
     
 
     private string aimAxis = "Aim";
@@ -71,11 +72,14 @@ public class PlayerAttack : MonoBehaviour {
     void OnSlashBegin()
     {
         sword.damaging = false;
+       
     }
 
     void OnSlashBeginDamage()
     {
         sword.damaging = true;
+        Manager.sfx_Source.clip = swordClip;
+        Manager.sfx_Source.Play();
     }
 
     void OnSlashEndDamage()

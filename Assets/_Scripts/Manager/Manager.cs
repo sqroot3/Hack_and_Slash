@@ -46,10 +46,19 @@ public class Manager : MonoBehaviour {
     [SerializeField] private float startWait = 0f;
     [SerializeField] private float endWait = 0f;
 
+    //Audio stuff
+    public static AudioSource music_Source;
+    public static AudioSource sfx_Source;
+
+    //Music should be streaming, sfx should decompress on load
+
+
+
     private void Awake()
     {
         hpSlider = GameObject.FindGameObjectWithTag("HP_Slider").GetComponent<Slider>();
-        
+        music_Source = GameObject.FindGameObjectWithTag("Music_Source").GetComponent<AudioSource>();
+        sfx_Source = GameObject.FindGameObjectWithTag("SFX_Source").GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -110,6 +119,7 @@ public class Manager : MonoBehaviour {
     private IEnumerator RoundStarting()
     {
         //init stuff here
+        
         yield return startWait;
        
     }

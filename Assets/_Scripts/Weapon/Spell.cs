@@ -18,6 +18,7 @@ public class Spell : MonoBehaviour {
     public static float charge;
     public float startCharge = 100f;
     public float shotCost = 20f;
+    public AudioClip magicClip;
 
 	// Use this for initialization
 	void Start () {
@@ -100,6 +101,8 @@ public class Spell : MonoBehaviour {
         spawner.SpawnParticleFromPool();
         damaging = true;
         charge -= shotCost;
+        Manager.sfx_Source.clip = magicClip;
+        Manager.sfx_Source.Play();
         /*
          * hits are managed by the particles themselves now
         if(currentAimEnemy)

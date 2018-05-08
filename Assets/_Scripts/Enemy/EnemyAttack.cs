@@ -14,6 +14,8 @@ public class EnemyAttack : MonoBehaviour {
     public GameObject backWheel;
     public GameObject armWheel;
     public static bool charged = true;
+    public AudioClip swingClip;
+
 
     public int State
     {
@@ -124,6 +126,8 @@ public class EnemyAttack : MonoBehaviour {
     void OnSwingBeginDamage()
     {
         damaging = true;
+        Manager.sfx_Source.clip = swingClip;
+        Manager.sfx_Source.Play();
     }
 
     void OnSwingEndDamage()

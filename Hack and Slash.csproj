@@ -322,6 +322,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Camera\CameraMovement.cs" />
+    <Compile Include="Assets\_Scripts\Enemy\ClickToMove.cs" />
+    <Compile Include="Assets\_Scripts\Enemy\Enemy_Weapon.cs" />
     <Compile Include="Assets\_Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\_Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\_Scripts\Enemy\EnemyMovement.cs" />
@@ -329,14 +331,21 @@
     <Compile Include="Assets\_Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\_Scripts\Spawner\Particle.cs" />
+    <Compile Include="Assets\_Scripts\Spawner\ParticlePool.cs" />
+    <Compile Include="Assets\_Scripts\Spawner\ParticleSpawner.cs" />
     <Compile Include="Assets\_Scripts\StateMachines\StateMachine.cs" />
     <Compile Include="Assets\_Scripts\Tree\Tree.cs" />
     <Compile Include="Assets\_Scripts\UI\Conversation.cs" />
     <Compile Include="Assets\_Scripts\UI\ConversationPlayer.cs" />
     <Compile Include="Assets\_Scripts\UI\Speaker.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Spell.cs" />
+    <Compile Include="Assets\_Scripts\Weapon\Throwable.cs" />
     <Compile Include="Assets\_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\WeaponStateMachine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Credits\BlazingRimeCredits.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour {
     public float currentHealth;
     private Rigidbody rb;
     private Animator animator;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -31,12 +32,13 @@ public class EnemyHealth : MonoBehaviour {
 
         Debug.Log("I was hit!" + currentHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
             OnDeath(type);
     }
     
     public void OnDeath(int type)
     {
+        isDead = true;
         switch(type)
         {
             case 0:
