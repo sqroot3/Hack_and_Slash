@@ -74,10 +74,8 @@ public class PlayerMovement : MonoBehaviour {
 		//Check if on death height
 		if(transform.position.y <= deathY /*&& !Manager.playerDied*/)
         {
-			/*
             PlayerHealth health = GetComponent<PlayerHealth>();
             health.OnDeath();
-			*/
             Debug.Log("Died from a fall");
         }
 
