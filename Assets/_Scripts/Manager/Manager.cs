@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour {
 
+    public static int difficulty;
 
     /*
      * Player "subclass" - needs to take care of player's attack/move/health 
@@ -37,6 +38,8 @@ public class Manager : MonoBehaviour {
 
 
     public static List<Tree> trees = new List<Tree>();
+    public List<EnemyAttack> enemies = new List<EnemyAttack>();
+    public List<Throwable> wheels = new List<Throwable>();
     public static int numOfBurningTrees = 0;
     public static int aliveEnemies = 0;
     public static int magicKills = 0;
@@ -53,12 +56,15 @@ public class Manager : MonoBehaviour {
     //Music should be streaming, sfx should decompress on load
 
 
-
     private void Awake()
     {
         hpSlider = GameObject.FindGameObjectWithTag("HP_Slider").GetComponent<Slider>();
         music_Source = GameObject.FindGameObjectWithTag("Music_Source").GetComponent<AudioSource>();
         sfx_Source = GameObject.FindGameObjectWithTag("SFX_Source").GetComponent<AudioSource>();
+        getEnemyReferences();
+        getWheelReferences();
+        adjustDifficulty();
+        Debug.Log("Launched with difficulty: " + difficulty);
     }
 
     // Use this for initialization
@@ -136,7 +142,7 @@ public class Manager : MonoBehaviour {
             swordText.text = string.Format("{0, 2}", swordKills);
 
             timerText.text = TranslateTime(gameTimer);
-            Debug.Log("Time Left: " + gameTimer);
+            //Debug.Log("Time Left: " + gameTimer);
             yield return null;
         }
     }
@@ -178,5 +184,38 @@ public class Manager : MonoBehaviour {
         result = string.Format("{0,2}:{1,2}", minutes.ToString("D2"), sec.ToString("D2"));
 
         return result;
+    }
+
+    void getEnemyReferences()
+    {
+        enemies.Clear();
+        //find and populate trees
+        GameObject[] result = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < result.Length; ++i)
+        {
+            EnemyAttack e = result[i].GetComponent<EnemyAttack>();
+            enemies.Add(e);
+        }
+    }
+
+    void getWheelReferences()
+    {
+        wheels.Clear();
+        //find and populate trees
+        GameObject[] result = GameObject.FindGameObjectsWithTag("Projectile");
+        for (int i = 0; i < result.Length; ++i)
+        {
+            Throwable t = result[i].GetComponent<Throwable>();
+            wheels.Add(t);
+        }
+    }
+
+    void adjustDifficulty()
+    {
+        float[] multipliers = { 0.25f, 1f, 1.75f };
+        foreach (EnemyAttack e in enemies)
+            e.meleeTouchDamage *= multipliers[difficulty];
+        foreach (Throwable t in wheels)
+            t.damage *= multipliers[difficulty];
     }
 }

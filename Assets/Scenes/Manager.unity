@@ -707,6 +707,10 @@ Prefab:
       propertyPath: swingClip
       value: 
       objectReference: {fileID: 8300000, guid: 92aa8b37363b7de4db1c674caed849bb, type: 3}
+    - target: {fileID: 1325768149269586, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
   m_IsPrefabParent: 0
@@ -2404,6 +2408,8 @@ MonoBehaviour:
   timerText: {fileID: 1368630807}
   magicText: {fileID: 961917023}
   swordText: {fileID: 1119886319}
+  enemies: []
+  wheels: []
   startWait: 0
   endWait: 3
 --- !u!1 &1450984872
