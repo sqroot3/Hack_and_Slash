@@ -87,7 +87,7 @@ public class Particle : MonoBehaviour {
             Manager.sfx_Source.Stop();
             ParticlePool.Instance.AddToPool(gameObject);
             //reset animation bla bla
-            other.GetComponent<Throwable>().Finish();
+            //other.GetComponent<Throwable>().Finish();
         }
     }
 

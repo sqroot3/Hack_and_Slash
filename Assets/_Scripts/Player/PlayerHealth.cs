@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour {
     {
         currentHealth -= amount;
         Manager.hpSlider.value = currentHealth;
-        Debug.Log("Hit! CH: " + currentHealth);
+        //Debug.Log("Hit! CH: " + currentHealth);
         if (currentHealth <= 0)
             OnDeath();
     }

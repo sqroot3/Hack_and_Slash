@@ -54,7 +54,7 @@ public class Manager : MonoBehaviour {
     public static AudioSource sfx_Source;
 
     //Music should be streaming, sfx should decompress on load
-
+    public Text endMessage;
 
     private void Awake()
     {
@@ -105,28 +105,13 @@ public class Manager : MonoBehaviour {
         yield return StartCoroutine(RoundStarting());
         yield return StartCoroutine(RoundPlaying());
         yield return StartCoroutine(RoundEnding());
-
-        //win/lose scenario
-
-        //@TODO: make win/loss implemented with gui too
-        if (won)
-        {
-            Debug.Log("You won! Restarting level!");
-        }
-        else
-        {
-            Debug.Log("You lost! Restarting leveL!");
-        }
-        
-        playerDied = false;
-        LoadLevel("Manager");
     }
 
     private IEnumerator RoundStarting()
     {
         //init stuff here
         
-        yield return startWait;
+        yield return new WaitForSeconds(startWait);
        
     }
 
@@ -151,7 +136,27 @@ public class Manager : MonoBehaviour {
     {
         //decide if won/lost
         won = !(aliveEnemies > 0);
-        yield return endWait;
+        string text = "";
+        Color msgColor;
+        if (won)
+        {
+            text = "YOU WIN!";
+            msgColor = new Color(110, 171, 87, 255);
+        }
+        else
+        {
+            text = "YOU LOSE!";
+            msgColor = new Color(221, 18, 18, 255);
+        }
+
+        endMessage.text = text;
+        endMessage.color = msgColor;
+        endMessage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(endWait);
+
+        //load game
+        playerDied = false;
+        LoadLevel("Manager");
     }
     
     void InitializeTrees()
@@ -216,6 +221,11 @@ public class Manager : MonoBehaviour {
         foreach (EnemyAttack e in enemies)
             e.meleeTouchDamage *= multipliers[difficulty];
         foreach (Throwable t in wheels)
+        {
             t.damage *= multipliers[difficulty];
+            t.gameObject.SetActive(false);
+            //t.GetComponent<GameObject>().SetActive(false);
+        }
+            
     }
 }

@@ -292,6 +292,7 @@
     <Compile Include="Assets\_Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\_Scripts\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\_Scripts\Manager\Manager.cs" />
+    <Compile Include="Assets\_Scripts\Manager\MenuManager.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />

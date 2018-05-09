@@ -204,13 +204,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.6054828
-        functionName: OnThrowLaunch
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0
         functionName: OnThrowBegin
         data: 
@@ -218,7 +211,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9761621
+      - time: 0.6054828
+        functionName: OnThrowLaunch
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8753869
         functionName: OnThrowEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

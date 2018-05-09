@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpHorizontal = 0f;
     private float jumpVertical = 0f;
 
+    public Transform torso;
 
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -159,15 +160,15 @@ public class PlayerMovement : MonoBehaviour {
 		switch(type)
 		{
 			case 0:
-				Debug.Log("Standing jump is at jumping point!");
+				//Debug.Log("Standing jump is at jumping point!");
 				rigidbody.velocity = transform.forward * moveVertical + transform.right * moveHorizontal + transform.up * jumpStrength;
 				break;
 			case 1:
-				Debug.Log("Walking jump is at jumping point!");
+				//Debug.Log("Walking jump is at jumping point!");
 				rigidbody.velocity = transform.forward * moveVertical + transform.right * moveHorizontal + transform.up * jumpStrength;
 				break;
 			case 2:
-				Debug.Log("Running jump is at jumping point!");
+				//Debug.Log("Running jump is at jumping point!");
 				//fix - not necessarily going "forward" all the time
 				EvaluateInitialJump();
 				Debug.DrawRay(transform.position, rigidbody.velocity, Color.black, 5f);
@@ -181,7 +182,7 @@ public class PlayerMovement : MonoBehaviour {
 	//Both of the below are also called on a state machine - this is to cover scenarios where the specific events may not be triggered
 	public void OnJumpStart(int type)
 	{
-		Debug.Log("Called OnJumpStart()!");
+		//Debug.Log("Called OnJumpStart()!");
 		currentJump = type;
 		checkGrounded = false;
         LockJump();
@@ -189,7 +190,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void OnJumpEnd()
 	{
-		Debug.Log("Called OnJumpEnd()!");
+		//Debug.Log("Called OnJumpEnd()!");
 		checkGrounded = true;
 		currentJump = -1;
         jumpHorizontal = 0;
@@ -201,19 +202,19 @@ public class PlayerMovement : MonoBehaviour {
         if (jumpHorizontal > 0)
         {
             //going right
-            Debug.Log("going right");
+            //Debug.Log("going right");
             rigidbody.velocity = this.transform.right;
             rigidbody.velocity *= leapHorizontal;
         }
         else if (jumpHorizontal < 0)
         {
-            Debug.Log("going left");
+            //Debug.Log("going left");
             rigidbody.velocity = -this.transform.right;
             rigidbody.velocity *= leapHorizontal;
         }
         else
         {
-            Debug.Log("straight up");
+            //Debug.Log("straight up");
             if (jumpVertical > 0)
                 rigidbody.velocity = this.transform.forward * leapHorizontal + this.transform.right + transform.up * rigidbody.velocity.y;
             else if (jumpVertical < 0)
@@ -226,19 +227,19 @@ public class PlayerMovement : MonoBehaviour {
         if (jumpHorizontal > 0)
         {
             //going right
-            Debug.Log("going right");
+            //Debug.Log("going right");
             rigidbody.velocity = this.transform.right + this.transform.up;
             rigidbody.velocity *= leapHorizontal;
         }
         else if (jumpHorizontal < 0)
         {
-            Debug.Log("going left");
+            //Debug.Log("going left");
             rigidbody.velocity = -this.transform.right + this.transform.up;
             rigidbody.velocity *= leapHorizontal;
         }
         else
         {
-            Debug.Log("straight up");
+            //Debug.Log("straight up");
             if (jumpVertical > 0)
                 rigidbody.velocity = this.transform.forward * leapHorizontal + Vector3.up * leapVertical;
             else if (jumpVertical < 0)

@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 65326382952688578}
   m_Layer: 0
   m_Name: sword
-  m_TagString: Untagged
+  m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1927,7 +1927,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1661090745833918}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -23.47, y: 0, z: 0}
+  m_LocalPosition: {x: -23.47, y: 22.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4908974771256520}
@@ -2795,6 +2795,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
+  torso: {fileID: 4180249959845740}
 --- !u!114 &114324013814665180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2808,6 +2809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 0}
   book: {fileID: 1379944474537594}
+  swordClip: {fileID: 8300000, guid: 92aa8b37363b7de4db1c674caed849bb, type: 3}
   attackTime: 1
 --- !u!114 &114327581144972428
 MonoBehaviour:
@@ -2827,6 +2829,9 @@ MonoBehaviour:
   currentAimTree: {fileID: 0}
   currentAimAt: {x: 0, y: 0, z: 0}
   spawner: {fileID: 0}
+  startCharge: 100
+  shotCost: 20
+  magicClip: {fileID: 8300000, guid: 9d9cc1305f7b5574d9c6ea4f85acd8cf, type: 3}
 --- !u!114 &114328261994051944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2869,6 +2874,7 @@ MonoBehaviour:
   strikeDamage: 20
   ignoreTime: 1
   damaging: 0
+  owner: {fileID: 1661090745833918}
 --- !u!124 &124897673818697990
 Behaviour:
   m_ObjectHideFlags: 1

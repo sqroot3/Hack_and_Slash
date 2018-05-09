@@ -13,7 +13,7 @@ public class EnemyAttack : MonoBehaviour {
     [HideInInspector] public bool damaging = false;
     public GameObject backWheel;
     public GameObject armWheel;
-    public static bool charged = true;
+    public bool charged = true;
     public AudioClip swingClip;
 
 
@@ -44,7 +44,7 @@ public class EnemyAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Current state: " + state);
+        //Debug.Log("Current state: " + state);
         /*
         switch (state)
         {
@@ -136,6 +136,7 @@ public class EnemyAttack : MonoBehaviour {
         animator.SetBool("swing", false);
     }
 
+    /*
     void OnThrowBegin()
     {
         //hide back wheel, turn on arm wheel
@@ -159,13 +160,68 @@ public class EnemyAttack : MonoBehaviour {
 
     public void resetLongRange()
     {
-        animator.SetBool("isLongRange", false);
         animator.SetBool("swing", false);
+        animator.SetBool("isLongRange", false);
     }
 
     public void resetWheelVisibility()
     {
+        animator.SetBool("swing", false);
         backWheel.SetActive(true);
+        //this is the problem for the shoulder bug
         armWheel.SetActive(false);
+    }
+    */
+
+    void OnThrowBegin()
+    {
+        //hide back, show arm wheel
+        //charge is now off
+        backWheel.SetActive(false);
+        armWheel.SetActive(true);
+        charged = false;
+    }
+
+    void OnThrowLaunch()
+    {
+        //wheel is on its own now, is no longer child of hand
+        
+        Throwable _projectile = armWheel.GetComponent<Throwable>();
+        _projectile.parent = armWheel.transform.parent;
+        armWheel.transform.parent = null;
+        _projectile.target = playerMovement;
+        Debug.Log(playerMovement.transform.position);
+        armWheel.SetActive(true);
+        _projectile.BeginFlight();
+
+    }
+
+    public void DestroyProjectile()
+    {
+        Throwable _projectile = armWheel.GetComponent<Throwable>();
+        armWheel.transform.parent = _projectile.parent;
+        armWheel.SetActive(false);
+        armWheel.transform.localPosition = _projectile.originalPosition;
+        armWheel.transform.localRotation = _projectile.originalRotation;
+    }
+
+    public IEnumerator Charge(float time)
+    {
+        yield return new WaitForSeconds(time);
+        //once charged, the back wheel "reappears"
+        backWheel.SetActive(true);
+        charged = true;
+    }
+
+    void LeaveThrowAnimation()
+    {
+        animator.SetBool("swing", false);
+        animator.SetBool("isLongRange", false);
+    }
+
+    void OnThrowEnd()
+    {
+        //once done throwing, get out of animation
+        LeaveThrowAnimation();
     }
 }

@@ -290,13 +290,13 @@ GameObject:
   - component: {fileID: 54522296989977242}
   - component: {fileID: 65141845237397600}
   - component: {fileID: 114992028509448862}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: wheel_throw
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1425007105551494
 GameObject:
   m_ObjectHideFlags: 1
@@ -1391,7 +1391,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177262702622874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.102, z: 0}
+  m_LocalPosition: {x: -18.18, y: 0, z: -14.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4405894486539114}
@@ -2035,9 +2035,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998883704379144}
-  m_Text: 
+  m_Text: aaa
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.3
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
@@ -2067,6 +2067,7 @@ MonoBehaviour:
   damaging: 0
   backWheel: {fileID: 1601214314348482}
   armWheel: {fileID: 1325768149269586}
+  swingClip: {fileID: 8300000, guid: 92aa8b37363b7de4db1c674caed849bb, type: 3}
 --- !u!114 &114412763145768760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2155,9 +2156,12 @@ MonoBehaviour:
   owner: {fileID: 114287399208886536}
   target: {fileID: 0}
   speed: 4
-  chargeTime: 1.5
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
+  chargeTime: 3
   damage: 15
   spinSpeed: 10
+  parent: {fileID: 0}
 --- !u!137 &137866811626780938
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

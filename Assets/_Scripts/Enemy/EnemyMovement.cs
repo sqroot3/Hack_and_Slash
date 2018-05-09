@@ -61,19 +61,12 @@ public class EnemyMovement : MonoBehaviour {
 
     private void Update()
     {
-        /*
         //Check if on death height
         if (transform.position.y <= deathY && !Manager.playerDied)
         {
             EnemyHealth health = GetComponent<EnemyHealth>();
-            health.OnDeath();
+            health.OnDeath(3);
             Debug.Log("Died from a fall");
-        }
-        */
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log(agent.destination + " - " + velocity + " - " + velocity.magnitude + " - " + agent.remainingDistance);
         }
 
         //BOTH IF: enemy is facing player && the player is in "detection range"
@@ -102,7 +95,7 @@ public class EnemyMovement : MonoBehaviour {
         {
             if (isKinematic)
             {
-                Debug.Log(agent.destination);
+                //Debug.Log(agent.destination);
                 //if kinematic, go to next station and set patrolling state
                 if (!agent.pathPending && agent.remainingDistance < 1f)
                     GoToNextStation();

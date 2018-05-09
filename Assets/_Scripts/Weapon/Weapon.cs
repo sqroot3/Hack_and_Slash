@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float ignoreTime = 5f;
     private float currentTime;
     public bool damaging = false;
+    public GameObject owner;
 
     void Awake()
     {
