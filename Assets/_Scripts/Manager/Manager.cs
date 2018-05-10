@@ -121,7 +121,7 @@ public class Manager : MonoBehaviour {
         {
             //@TODO: implement game timer with UI (possibly slider) & remove comment below
             gameTimer -= Time.deltaTime;
-            Spell.charge += Time.deltaTime * 2.0f;
+            Spell.charge += Time.deltaTime * 3.5f;
             magicSlider.value = Spell.charge;
             magicText.text = string.Format("{0, 2}", magicKills);
             swordText.text = string.Format("{0, 2}", swordKills);

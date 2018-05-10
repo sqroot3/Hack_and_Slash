@@ -39,12 +39,4 @@ public class Tree : MonoBehaviour {
     {
         return Vector3.Distance(transform.position, src);
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            ToggleFire();
-        }
-    }
 }
