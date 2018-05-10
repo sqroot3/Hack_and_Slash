@@ -193,7 +193,7 @@ public class Manager : MonoBehaviour {
             //allow the player to enter his/her name within 5 seconds
             yield return new WaitForSeconds(5f);
 
-            SaveData data = new SaveData(swordKills, magicKills, TranslateTime(startingTime - gameTimer), startingTime - gameTimer, name, translateDifficulty());
+            SaveData data = new SaveData(magicKills, swordKills, TranslateTime(startingTime - gameTimer), startingTime - gameTimer, name, translateDifficulty());
             saver.setSaveData(data);
             saver.saveDataToDisk();
             UpdateHighscoreUI();
