@@ -285,6 +285,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Game.Plugins.csproj">
+      <Project>{96EA980B-FC32-D677-1019-40B688E6AD79}</Project>
+      <Name>Game.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\_Scripts\Camera\CameraMovement.cs" />
     <Compile Include="Assets\_Scripts\Enemy\ClickToMove.cs" />
     <Compile Include="Assets\_Scripts\Enemy\Enemy_Weapon.cs" />
@@ -312,6 +318,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Credits\BlazingRimeCredits.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
     <None Include="Assets\_Materials\Background.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

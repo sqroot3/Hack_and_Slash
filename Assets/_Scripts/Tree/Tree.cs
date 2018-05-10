@@ -6,8 +6,13 @@ public class Tree : MonoBehaviour {
 
     [SerializeField]
     private bool onFire;
-    [SerializeField]
     private GameObject player;
+    public GameObject firePit;
+
+    private void Awake()
+    {
+        firePit.SetActive(false);
+    }
 
     public bool OnFire
     {
@@ -19,11 +24,13 @@ public class Tree : MonoBehaviour {
         if(onFire)
         {
             onFire = false;
+            firePit.SetActive(false);
             Manager.numOfBurningTrees--;
         }
         else
         {
             onFire = true;
+            firePit.SetActive(true);
             Manager.numOfBurningTrees++;
         }
     }
