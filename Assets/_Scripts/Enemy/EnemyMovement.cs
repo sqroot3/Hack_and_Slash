@@ -47,6 +47,8 @@ public class EnemyMovement : MonoBehaviour {
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 velocity = Vector2.zero;
 
+    public bool isTunnel;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -80,8 +82,8 @@ public class EnemyMovement : MonoBehaviour {
             attack.OnAttack();
 
         }
-        //IF no player in sight to go and there's at least one tree burning
-        else if (Manager.numOfBurningTrees > 0)
+        //IF no player in sight to go and there's at least one tree burning AND the agent is not a tunnel agent
+        else if (Manager.numOfBurningTrees > 0 && !isTunnel)
         {
             agent.angularSpeed = 120;
             //go to closest burning tree

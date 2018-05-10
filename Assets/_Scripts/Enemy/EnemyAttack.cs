@@ -136,43 +136,6 @@ public class EnemyAttack : MonoBehaviour {
         animator.SetBool("swing", false);
     }
 
-    /*
-    void OnThrowBegin()
-    {
-        //hide back wheel, turn on arm wheel
-        backWheel.SetActive(false);
-        armWheel.SetActive(true);
-        charged = false;
-    }
-
-    void OnThrowLaunch()
-    {
-        //arm wheel goes flying at player :)
-        Throwable _projectile = armWheel.GetComponent<Throwable>();
-        _projectile.target = player.transform;
-        _projectile.BeginFlight();
-    }
-
-    void OnThrowEnd()
-    {
-        animator.SetBool("swing", false);
-    }
-
-    public void resetLongRange()
-    {
-        animator.SetBool("swing", false);
-        animator.SetBool("isLongRange", false);
-    }
-
-    public void resetWheelVisibility()
-    {
-        animator.SetBool("swing", false);
-        backWheel.SetActive(true);
-        //this is the problem for the shoulder bug
-        armWheel.SetActive(false);
-    }
-    */
-
     void OnThrowBegin()
     {
         //hide back, show arm wheel
@@ -194,6 +157,9 @@ public class EnemyAttack : MonoBehaviour {
         armWheel.SetActive(true);
         _projectile.BeginFlight();
 
+        //start an enumerator to force leaving the animation state - hopefully fixes the shoulder glitch
+        StartCoroutine(ExitThrowAnimation());
+
     }
 
     public void DestroyProjectile()
@@ -211,6 +177,13 @@ public class EnemyAttack : MonoBehaviour {
         //once charged, the back wheel "reappears"
         backWheel.SetActive(true);
         charged = true;
+    }
+
+    IEnumerator ExitThrowAnimation()
+    {
+        //layer 1 is the attack layer
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(1).length + animator.GetCurrentAnimatorStateInfo(1).normalizedTime);
+        LeaveThrowAnimation();
     }
 
     void LeaveThrowAnimation()

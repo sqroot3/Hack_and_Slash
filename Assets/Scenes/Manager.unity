@@ -499,34 +499,6 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 583.941, z: 0}
---- !u!1 &42841763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 42841764}
-  m_Layer: 0
-  m_Name: EnemyRoute_Side (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &42841764
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 42841763}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.245565, y: 0, z: 2.7225742}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &48073225
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,11 +599,16 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.7
+      value: -28.4
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -639,7 +616,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 156.4
+      value: 135.58
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -659,7 +636,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -675,12 +652,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 1565844570}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 1623596999}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -688,7 +665,17 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (18)
+      value: Mutant_Mid_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1007884973}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -1643,11 +1630,16 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -54.1
+      value: -12.5
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1655,7 +1647,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 183.9
+      value: 204.8
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1675,7 +1667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -1691,12 +1683,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 1549107873}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 184979563}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -1704,7 +1696,17 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (20)
+      value: Mutant_Sweep_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1913252014}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -1804,33 +1806,33 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -52.507004, z: 0}
---- !u!1 &179671890
+--- !u!1 &184979562
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 179671891}
+  - component: {fileID: 184979563}
   m_Layer: 0
-  m_Name: EnemyRoute_Center (2)
+  m_Name: Tunnel_Mid_Left
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &179671891
+--- !u!4 &184979563
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 179671890}
+  m_GameObject: {fileID: 184979562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 0, z: 4.5}
+  m_LocalPosition: {x: -51.585564, y: -20.269495, z: 169.58257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 6
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &190278051 stripped
 Transform:
@@ -1890,12 +1892,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -1904,6 +1906,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -1951,7 +1957,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -2950,12 +2956,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -2964,6 +2970,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -3236,34 +3246,6 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 655.103, z: 0}
---- !u!1 &379786107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 379786108}
-  m_Layer: 0
-  m_Name: EnemyRoute_Center (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &379786108
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 379786107}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -78.14, y: 0, z: 12.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402792820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3526,17 +3508,21 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
       value: 
       objectReference: {fileID: 738976296}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
   m_IsPrefabParent: 0
@@ -3700,12 +3686,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -3714,6 +3700,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -3813,33 +3803,33 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 84
   m_LocalEulerAnglesHint: {x: 0, y: 369.612, z: 0}
---- !u!1 &490067006
+--- !u!1 &512557597
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 490067007}
+  - component: {fileID: 512557598}
   m_Layer: 0
-  m_Name: EnemyRoute_Side
+  m_Name: Tunnel_Top_Right
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &490067007
+--- !u!4 &512557598
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 490067006}
+  m_GameObject: {fileID: 512557597}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: -45.9}
+  m_LocalPosition: {x: 58.174435, y: -20.269495, z: 185.84258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 0
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518631499
 GameObject:
@@ -4126,34 +4116,6 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &571581973
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 571581974}
-  m_Layer: 0
-  m_Name: EnemyRoute_Center (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &571581974
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 571581973}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.1, y: 0, z: -14.177426}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &588365549
 Prefab:
   m_ObjectHideFlags: 0
@@ -4227,62 +4189,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3,
     type: 2}
   m_PrefabInternal: {fileID: 1199864730}
---- !u!1 &590707678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 590707679}
-  m_Layer: 0
-  m_Name: EnemyRoute_Center (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &590707679
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 590707678}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.2, y: 0, z: 20.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &604277411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 604277412}
-  m_Layer: 0
-  m_Name: EnemyRoute_Side (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &604277412
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 604277411}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.155563, y: 0, z: 2.7225742}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &613422086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,34 +5188,6 @@ Camera:
   m_PrefabParentObject: {fileID: 20444759997378036, guid: 705eb3059657841128d6358879912972,
     type: 2}
   m_PrefabInternal: {fileID: 621943160}
---- !u!1 &745008758
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 745008759}
-  m_Layer: 0
-  m_Name: EnemyRoute_Side (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &745008759
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 745008758}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.155563, y: 0, z: -33.977425}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758185416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,34 +5317,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &763595784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 763595785}
-  m_Layer: 0
-  m_Name: EnemyRoute_Center
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &763595785
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763595784}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.545567, y: 0, z: -4.577427}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &771067524
 GameObject:
   m_ObjectHideFlags: 0
@@ -6486,8 +6336,13 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
       value: -29.62
@@ -6518,7 +6373,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -6534,12 +6389,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 1913252014}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 1623596999}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -6547,7 +6402,17 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (17)
+      value: Mutant_Mid_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1007884973}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -6878,12 +6743,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -6892,6 +6757,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -7266,6 +7135,34 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 677.584, z: 0}
+--- !u!1 &1007884972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1007884973}
+  m_Layer: 0
+  m_Name: Tunnel_Mid
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1007884973
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1007884972}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.375565, y: -20.269495, z: 138.49257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1009218200
 GameObject:
   m_ObjectHideFlags: 0
@@ -7482,12 +7379,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -7496,6 +7393,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -7723,6 +7624,41 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 327.37, z: 0}
+--- !u!1 &1036660101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1036660102}
+  m_Layer: 0
+  m_Name: Tunnel_Agents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1036660102
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1036660101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 777718413}
+  - {fileID: 1663065431}
+  - {fileID: 190278051}
+  - {fileID: 1144647056}
+  - {fileID: 1332203598}
+  - {fileID: 1276402974}
+  - {fileID: 1889087572}
+  m_Father: {fileID: 1993380450}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042697334 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: f969ff230d1a5734c8c4f42166fe5ad7, type: 3}
@@ -7814,12 +7750,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -7828,6 +7764,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -7906,11 +7846,16 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -79.5
+      value: -18.52
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7918,7 +7863,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 143.2
+      value: 194.13
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7938,7 +7883,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -7954,12 +7899,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 1549107873}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 1095554374}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -7967,11 +7912,49 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (21)
+      value: Mutant_Sweep_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1565844570}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1095554373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1095554374}
+  m_Layer: 0
+  m_Name: Tunnel_Mid_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095554374
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095554373}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.2055664, y: -20.269495, z: 169.58257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102279704
 GameObject:
   m_ObjectHideFlags: 0
@@ -8274,34 +8257,6 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 722.2, z: 0}
---- !u!1 &1160614042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1160614043}
-  m_Layer: 0
-  m_Name: EnemyRoute_Center (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &1160614043
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1160614042}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.01, y: 0, z: 20.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1640913417}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191746045
 GameObject:
   m_ObjectHideFlags: 0
@@ -8640,12 +8595,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -8654,6 +8609,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -8853,8 +8812,13 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
       value: -18.5
@@ -8885,7 +8849,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -8901,12 +8865,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 1913252014}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 1623596999}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -8914,7 +8878,22 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (19)
+      value: Mutant_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1565844570}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[3]
+      value: 
+      objectReference: {fileID: 1095554374}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -9172,12 +9151,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -9186,6 +9165,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -9675,12 +9658,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -9689,6 +9672,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -9746,12 +9733,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -9760,6 +9747,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -9832,6 +9823,42 @@ Transform:
   m_PrefabParentObject: {fileID: 4743020109193642, guid: 25e3372f19204304daab8e86a5a379ae,
     type: 2}
   m_PrefabInternal: {fileID: 1402281947}
+--- !u!1 &1408269448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1408269449}
+  m_Layer: 0
+  m_Name: Tunnels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1408269449
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408269448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1623596999}
+  - {fileID: 1913252014}
+  - {fileID: 184979563}
+  - {fileID: 1007884973}
+  - {fileID: 1565844570}
+  - {fileID: 1095554374}
+  - {fileID: 1549107873}
+  - {fileID: 512557598}
+  m_Father: {fileID: 1640913417}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409681757
 GameObject:
   m_ObjectHideFlags: 0
@@ -10035,12 +10062,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -10049,6 +10076,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -10970,12 +11001,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -10984,6 +11015,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -11067,6 +11102,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1525068399}
+--- !u!1 &1549107872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1549107873}
+  m_Layer: 0
+  m_Name: Tunnel_Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1549107873
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1549107872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.855564, y: -20.269495, z: 215.70457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555042694
 GameObject:
   m_ObjectHideFlags: 0
@@ -11162,6 +11225,34 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 722.2, z: 0}
+--- !u!1 &1565844569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1565844570}
+  m_Layer: 0
+  m_Name: Tunnel_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1565844570
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1565844569}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 45.564434, y: -20.269495, z: 129.72256}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576115024
 GameObject:
   m_ObjectHideFlags: 0
@@ -11675,16 +11766,49 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 219.99799, z: 0}
+--- !u!1 &1623596998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1623596999}
+  m_Layer: 0
+  m_Name: Tunnel_Entrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623596999
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1623596998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.375565, y: -20.269495, z: 88.46258}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1628776033
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 46.8
+      value: -27.5
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -11692,7 +11816,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 143.2
+      value: 100.9
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -11712,7 +11836,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -11728,12 +11852,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 1913252014}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 1623596999}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -11741,7 +11865,17 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (22)
+      value: Mutant_Bottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1565844570}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -11771,16 +11905,7 @@ Transform:
   m_LocalPosition: {x: 39.145565, y: 22.352495, z: 15.977427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 490067007}
-  - {fileID: 745008759}
-  - {fileID: 604277412}
-  - {fileID: 42841764}
-  - {fileID: 763595785}
-  - {fileID: 590707679}
-  - {fileID: 179671891}
-  - {fileID: 571581974}
-  - {fileID: 379786108}
-  - {fileID: 1160614043}
+  - {fileID: 1408269449}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12458,12 +12583,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -12472,6 +12597,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -13472,6 +13601,34 @@ Transform:
   m_Father: {fileID: 1027407022}
   m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 482.92902, z: 0}
+--- !u!1 &1913252013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1913252014}
+  m_Layer: 0
+  m_Name: Tunnel_Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913252014
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1913252013}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -77.99556, y: -20.269495, z: 133.97256}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408269449}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938260284
 GameObject:
   m_ObjectHideFlags: 0
@@ -13967,13 +14124,7 @@ Transform:
   - {fileID: 461852505}
   - {fileID: 589996910}
   - {fileID: 1367706662}
-  - {fileID: 777718413}
-  - {fileID: 1663065431}
-  - {fileID: 190278051}
-  - {fileID: 1144647056}
-  - {fileID: 1332203598}
-  - {fileID: 1276402974}
-  - {fileID: 1889087572}
+  - {fileID: 1036660102}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14098,12 +14249,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -14112,6 +14263,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -14397,12 +14552,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 604277412}
+      objectReference: {fileID: 0}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 745008759}
+      objectReference: {fileID: 0}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -14411,6 +14566,10 @@ Prefab:
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
       value: Kinetic_Mutant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
@@ -14620,8 +14779,13 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1993380450}
+    m_TransformParent: {fileID: 1036660102}
     m_Modifications:
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_LocalPosition.x
       value: -29.62
@@ -14652,7 +14816,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427123012479924, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114287399208886536, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
@@ -14668,12 +14832,12 @@ Prefab:
         type: 2}
       propertyPath: stations.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1007884973}
     - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: stations.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 184979563}
     - target: {fileID: 114459001394240138, guid: 7a3af73a3366f024db5b3c722a8267a3,
         type: 2}
       propertyPath: camera
@@ -14681,7 +14845,32 @@ Prefab:
       objectReference: {fileID: 738976296}
     - target: {fileID: 1177262702622874, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
       propertyPath: m_Name
-      value: Kinetic_Mutant (16)
+      value: Mutant_Entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 1549107873}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[3]
+      value: 
+      objectReference: {fileID: 1095554374}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[4]
+      value: 
+      objectReference: {fileID: 1007884973}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: stations.Array.data[5]
+      value: 
+      objectReference: {fileID: 1623596999}
+    - target: {fileID: 114603493842989036, guid: 7a3af73a3366f024db5b3c722a8267a3,
+        type: 2}
+      propertyPath: isTunnel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a3af73a3366f024db5b3c722a8267a3, type: 2}
