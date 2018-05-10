@@ -1928,7 +1928,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -10045,6 +10045,7 @@ MonoBehaviour:
     sTime: 
     fTime: 0
     name: 
+    difficulty: N/A
 --- !u!1 &1436589399
 GameObject:
   m_ObjectHideFlags: 0
