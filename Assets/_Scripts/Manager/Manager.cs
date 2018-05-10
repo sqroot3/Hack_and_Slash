@@ -127,14 +127,6 @@ public class Manager : MonoBehaviour {
        
     }
 
-    private void Update()
-    {
-        if(Input.GetKey(KeyCode.K))
-        {
-            player.health.Damage(50f);
-        }
-    }
-
     private IEnumerator RoundPlaying()
     {
         while (aliveEnemies > 0 && !playerDied && gameTimer > 0f)

@@ -77,11 +77,21 @@ public class Throwable : MonoBehaviour {
         //cant damage or move
         //recharge with time
         //restrictions back (y-movement)
-        owner.StartCoroutine(owner.Charge(chargeTime));
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        damaging = false;
-        moving = false;
-        owner.DestroyProjectile();
+        //if the owner is still alive, do it through his side
+        if(owner)
+        {
+            owner.StartCoroutine(owner.Charge(chargeTime));
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            damaging = false;
+            moving = false;
+            owner.DestroyProjectile();
+        }
+        else
+        {
+            //if owner is dead, just destroy the game object
+            GameObject.Destroy(gameObject);
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,55 +115,4 @@ public class Throwable : MonoBehaviour {
         }
     }
 
-        /*
-        private void OnTriggerEnter(Collider other)
-        {
-            if(other.tag == "Player")
-            {
-                Debug.Log("Enemy hit player with a wheel!");
-                other.GetComponent<Animator>().SetBool("damaged", true);
-                other.GetComponent<PlayerHealth>().Damage(damage);
-                Finish();
-            }
-            //if it hits anything other than the player, just finish
-            else if(other.tag != "Enemy" && other.tag != "Enemy_Weapon")
-            {
-                Debug.Log(other.tag);
-                Finish();
-            }
-        }
-
-        public void BeginFlight()
-        {
-            damaging = true;
-            moving = true;
-            StartCoroutine(SelfDestroy(lifetime));
-        }
-
-        public void Finish()
-        {
-            Debug.Log(owner.name + " Finish called");
-            damaging = false;
-            moving = false;
-            transform.position = 1000* Random.insideUnitSphere;
-            owner.resetLongRange();
-            Debug.Log("Should be free of anim");
-            StartCoroutine(Charge());
-        }
-
-        private IEnumerator SelfDestroy(float lifetime)
-        {
-            yield return new WaitForSeconds(lifetime);
-            Finish();
-        }
-
-        IEnumerator Charge()
-        {
-            Debug.Log(owner.name + " Charge called");
-            yield return new WaitForSeconds(chargeTime);
-            transform.localPosition = originalPosition;
-            EnemyAttack.charged = true;
-            owner.resetWheelVisibility();
-        }
-        */
-    }
+}
