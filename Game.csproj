@@ -302,6 +302,8 @@
     <Compile Include="Assets\_Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\_Scripts\Scoreboard\SaveData.cs" />
+    <Compile Include="Assets\_Scripts\Scoreboard\SaveManager.cs" />
     <Compile Include="Assets\_Scripts\Spawner\Particle.cs" />
     <Compile Include="Assets\_Scripts\Spawner\ParticlePool.cs" />
     <Compile Include="Assets\_Scripts\Spawner\ParticleSpawner.cs" />

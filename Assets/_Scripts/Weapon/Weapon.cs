@@ -30,10 +30,18 @@ public class Weapon : MonoBehaviour
         //only attack if not already attacking
         if(!animator.GetBool(hashSwing))
         {
+            StartCoroutine(LeaveSwingAnimation());
             animator.SetBool(hashSwing, true);
             animator.SetBool("isLongRange", false);
         }
             
+    }
+
+    IEnumerator LeaveSwingAnimation()
+    {
+        //layer 1 is attacking
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(1).length + animator.GetCurrentAnimatorStateInfo(1).normalizedTime);
+        animator.SetBool(hashSwing, false);
     }
 
     private void OnCollisionEnter(Collision collision)

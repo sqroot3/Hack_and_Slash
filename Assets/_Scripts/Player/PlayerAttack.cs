@@ -45,8 +45,11 @@ public class PlayerAttack : MonoBehaviour {
         else
         {
             //re-center & "lock" mouse when not in "aim" mode
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if(Manager.playing)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
             currentAttack = 0;
             book.SetActive(false);
         }

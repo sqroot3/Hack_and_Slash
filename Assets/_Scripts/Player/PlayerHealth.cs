@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour {
     {
         currentHealth -= amount;
         Manager.hpSlider.value = currentHealth;
+        StartCoroutine(LeaveDamagedAnimation());
         //Debug.Log("Hit! CH: " + currentHealth);
         if (currentHealth <= 0)
             OnDeath();
@@ -58,6 +59,14 @@ public class PlayerHealth : MonoBehaviour {
             }
         }
     }
+
+    public IEnumerator LeaveDamagedAnimation()
+    {
+        //layer 2 is health
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(2).length + animator.GetCurrentAnimatorStateInfo(2).normalizedTime);
+        animator.SetBool("damaged", false);
+    }
+
    
     void OnHitBegin()
     {

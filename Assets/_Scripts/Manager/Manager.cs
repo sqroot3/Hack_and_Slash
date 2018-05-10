@@ -23,11 +23,14 @@ public class Manager : MonoBehaviour {
         public Spell magic;
     }
 
+    private SaveManager saver;
 
     [SerializeField] private GameObject playerPrefab;
     public Player player = new Player();
 
-    [SerializeField] private float gameTimer;
+    [HideInInspector] public float gameTimer;
+    private float startingTime; 
+    public static bool playing = true;
 
     /* GUI STUFF */
     public static Slider hpSlider;
@@ -35,6 +38,11 @@ public class Manager : MonoBehaviour {
     public Text timerText;
     public Text magicText;
     public Text swordText;
+    public InputField highscoreName;
+    public Button submitHighscore;
+    public Text mvpMessage;
+
+    private string name = "";
 
 
     public static List<Tree> trees = new List<Tree>();
@@ -55,9 +63,12 @@ public class Manager : MonoBehaviour {
 
     //Music should be streaming, sfx should decompress on load
     public Text endMessage;
+    
 
     private void Awake()
     {
+        startingTime = gameTimer;
+        saver = GetComponent<SaveManager>();
         hpSlider = GameObject.FindGameObjectWithTag("HP_Slider").GetComponent<Slider>();
         music_Source = GameObject.FindGameObjectWithTag("Music_Source").GetComponent<AudioSource>();
         sfx_Source = GameObject.FindGameObjectWithTag("SFX_Source").GetComponent<AudioSource>();
@@ -80,6 +91,7 @@ public class Manager : MonoBehaviour {
         aliveEnemies = getNumberOfEnemies();
         StartCoroutine(GameLoop());
         magicSlider.value = Spell.charge;
+        UpdateHighscoreUI();
 	}
 
     void GetPlayerData()
@@ -115,6 +127,14 @@ public class Manager : MonoBehaviour {
        
     }
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.K))
+        {
+            player.health.Damage(50f);
+        }
+    }
+
     private IEnumerator RoundPlaying()
     {
         while (aliveEnemies > 0 && !playerDied && gameTimer > 0f)
@@ -130,6 +150,18 @@ public class Manager : MonoBehaviour {
             //Debug.Log("Time Left: " + gameTimer);
             yield return null;
         }
+    }
+
+    void UpdateHighscoreUI()
+    {
+        //Need to update the actual message 
+        //string name = (saver.save.name.Length > 0) ? saver.save.name : "N/A";
+        //string playtime = (saver.save.sTime.Length >0)
+        mvpMessage.text = "Name: <color=#ffffffff>" + saver.save.name + "</color>\n";
+        mvpMessage.text += "Sword kills: <color=#ffffffff>" + saver.save.swordKills + "</color>\n";
+        mvpMessage.text += "Magic kills: <color=#ffffffff>" + saver.save.magicKills + "</color>\n";
+        mvpMessage.text += "Playing time: <color=#ffffffff>" + saver.save.sTime + "</color>\n";
+        mvpMessage.text += "Difficulty: <color=#ffffffff>" + saver.save.difficulty + "</color>\n";
     }
 
     private IEnumerator RoundEnding()
@@ -152,11 +184,49 @@ public class Manager : MonoBehaviour {
         endMessage.text = text;
         endMessage.color = msgColor;
         endMessage.gameObject.SetActive(true);
+
+        //if its a high score, save it
+        if(saver.isHighScore(swordKills, magicKills, startingTime - gameTimer))
+        {
+            //show both input and button
+            highscoreName.gameObject.SetActive(true);
+            submitHighscore.gameObject.SetActive(true);
+
+            //allow mouse to move & select input
+            playing = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+           
+
+            //allow the player to enter his/her name within 5 seconds
+            yield return new WaitForSeconds(5f);
+
+            SaveData data = new SaveData(swordKills, magicKills, TranslateTime(startingTime - gameTimer), startingTime - gameTimer, name, translateDifficulty());
+            saver.setSaveData(data);
+            saver.saveDataToDisk();
+            UpdateHighscoreUI();
+        }
         yield return new WaitForSeconds(endWait);
 
         //load game
         playerDied = false;
         LoadLevel("Manager");
+    }
+
+    string translateDifficulty()
+    {
+        switch(difficulty)
+        {
+            case 0: return "Easy";
+            case 1: return "Medium";
+            case 2: return "Hard";
+            default: return "Unknown";
+        }
+    }
+
+    public void configureName()
+    {
+        name = (highscoreName.text.Length > 0 && highscoreName.text.Length < 12) ? highscoreName.text : "Unknown";
     }
     
     void InitializeTrees()
